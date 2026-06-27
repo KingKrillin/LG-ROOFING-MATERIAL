@@ -156,9 +156,12 @@ h1.font-display, h2.font-display, h3.font-display {
   background-color: rgba(15, 15, 16, 0.85);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(245, 243, 238, 0.08);
-  transition: box-shadow 0.3s var(--ease-out);
+  transition: box-shadow 0.3s var(--ease-out), transform 0.35s var(--ease-out);
 }
 #site-header.scrolled { box-shadow: 0 8px 24px -12px rgba(0,0,0,0.6); }
+@media (max-width: 767px) {
+  #site-header.header-hidden { transform: translateY(-100%); }
+}
 
 .nav-link {
   position: relative;

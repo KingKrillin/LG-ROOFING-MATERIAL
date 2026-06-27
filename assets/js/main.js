@@ -1,10 +1,25 @@
 // LG Roofing Materials — shared site behavior
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Header scroll shadow
+  // Header scroll shadow + hide-on-scroll-down / reveal-on-scroll-up (mobile)
   const header = document.getElementById('site-header');
   if (header) {
-    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+    let lastScrollY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      header.classList.toggle('scrolled', y > 8);
+
+      const mobileMenuEl = document.getElementById('mobile-menu');
+      const menuOpen = mobileMenuEl && mobileMenuEl.classList.contains('is-open');
+      if (!menuOpen) {
+        if (y > lastScrollY && y > header.offsetHeight) {
+          header.classList.add('header-hidden');
+        } else if (y < lastScrollY) {
+          header.classList.remove('header-hidden');
+        }
+      }
+      lastScrollY = y;
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
   }
