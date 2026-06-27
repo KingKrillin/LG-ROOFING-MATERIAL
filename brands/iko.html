@@ -338,7 +338,7 @@
 
 <!-- PRODUCT HERO -->
 <section class="oc-hero">
-  <div class="oc-hero__bg" id="hero-bg" style="background-image:url('../assets/images/shingles/cambridge/dual-grey-texture.jpg');"></div>
+  <div class="oc-hero__bg" id="hero-bg" style="background-image:url('../assets/images/logo-IKO.png');"></div>
   <div class="oc-hero__overlay"></div>
   <div class="oc-hero__content mx-auto max-w-7xl px-6 lg:px-8 py-14">
     <nav class="text-xs text-white/60" aria-label="Breadcrumb">
@@ -615,9 +615,6 @@
     previewImg.src = `${SHINGLE_BASE}${color.slug}-texture.jpg`;
     previewImg.alt = `IKO Cambridge ${color.name} shingle close-up texture`;
     previewImg.onload = () => previewImg.classList.remove('is-loading');
-
-    const heroBg = document.getElementById('hero-bg');
-    if (heroBg) heroBg.style.backgroundImage = `url('${SHINGLE_BASE}${color.slug}-texture.jpg')`;
 
     document.querySelectorAll('.oc-swatch').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.name === color.name);
