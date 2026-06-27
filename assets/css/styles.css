@@ -15,6 +15,7 @@
   --shadow-md: 0 12px 28px -8px rgba(15, 15, 16, 0.55), 0 4px 10px -4px rgba(200, 146, 58, 0.10);
   --shadow-lg: 0 28px 60px -16px rgba(15, 15, 16, 0.65), 0 8px 20px -6px rgba(200, 146, 58, 0.14);
   --shadow-gold: 0 10px 30px -8px rgba(200, 146, 58, 0.35), 0 2px 8px -2px rgba(0,0,0,0.4);
+  --shadow-hover-glow: 0 20px 45px -14px rgba(15, 15, 16, 0.6), 0 0 0 1px rgba(200, 146, 58, 0.12), 0 8px 28px -6px rgba(200, 146, 58, 0.45);
 
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -103,7 +104,8 @@ h1.font-display, h2.font-display, h3.font-display {
 .btn-secondary:hover {
   border-color: var(--gold-bright);
   color: var(--gold-bright);
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: var(--shadow-hover-glow);
 }
 .btn-secondary:focus-visible {
   outline: 2px solid var(--gold-bright);
@@ -128,6 +130,22 @@ h1.font-display, h2.font-display, h3.font-display {
   background-color: #1a1a1c;
   border: 1px solid rgba(200, 146, 58, 0.18);
   box-shadow: var(--shadow-lg);
+  transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-out), border-color 0.3s var(--ease-out);
+}
+.surface-floating:hover {
+  transform: translateY(-5px) scale(1.012);
+  border-color: rgba(200, 146, 58, 0.45);
+  box-shadow: var(--shadow-lg), var(--shadow-hover-glow);
+}
+
+/* Universal hover-elevate-glow for any standalone bordered box/pill/badge */
+.hover-box {
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-out), border-color 0.3s var(--ease-out);
+}
+.hover-box:hover {
+  transform: translateY(-4px) scale(1.025);
+  border-color: rgba(200, 146, 58, 0.45) !important;
+  box-shadow: var(--shadow-hover-glow);
 }
 
 /* Header */
@@ -177,9 +195,9 @@ h1.font-display, h2.font-display, h3.font-display {
   transition: transform 0.45s var(--ease-spring), box-shadow 0.45s var(--ease-out), border-color 0.35s var(--ease-out);
 }
 .brand-card:hover, .brand-card:focus-visible {
-  transform: translateY(-6px) scale(1.015);
-  box-shadow: var(--shadow-lg);
-  border-color: rgba(200, 146, 58, 0.4);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: var(--shadow-lg), var(--shadow-hover-glow);
+  border-color: rgba(200, 146, 58, 0.45);
 }
 .brand-card:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 2px; }
 
@@ -219,9 +237,13 @@ h1.font-display, h2.font-display, h3.font-display {
   overflow: hidden;
   border: 1px solid rgba(245, 243, 238, 0.1);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-out);
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-out), border-color 0.3s var(--ease-out);
 }
-.swatch:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.swatch:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(200, 146, 58, 0.4);
+  box-shadow: var(--shadow-md), var(--shadow-hover-glow);
+}
 .swatch__chip { height: 6rem; }
 
 /* Reveal on scroll */
@@ -276,7 +298,6 @@ h1.font-display, h2.font-display, h3.font-display {
 .marquee__track {
   display: flex;
   align-items: center;
-  gap: 2.5rem;
   width: max-content;
   animation: marquee-scroll 32s linear infinite;
 }
@@ -289,15 +310,18 @@ h1.font-display, h2.font-display, h3.font-display {
   flex: 0 0 auto;
   width: 10.5rem;
   height: 5.25rem;
+  margin-right: 2.5rem;
   border-radius: 0.65rem;
   overflow: hidden;
   border: 1px solid rgba(245, 243, 238, 0.08);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.35s var(--ease-spring), border-color 0.35s var(--ease-out);
+  transition: transform 0.35s var(--ease-spring), border-color 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
 }
 .marquee__logo:hover {
-  transform: translateY(-3px);
-  border-color: rgba(200, 146, 58, 0.4);
+  transform: translateY(-5px) scale(1.06);
+  border-color: rgba(200, 146, 58, 0.5);
+  box-shadow: var(--shadow-hover-glow);
+  z-index: 1;
 }
 .marquee__logo img {
   width: 100%;
