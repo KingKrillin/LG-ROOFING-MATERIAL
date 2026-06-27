@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | LG Roofing Materials — Houston, TX</title>
+<meta name="description" content="Contact LG Roofing Materials in Houston, TX. Call now or send a message to request a quote, check product availability, or schedule pickup and delivery.">
+<link rel="icon" type="image/png" href="assets/images/lg-logo-color.png">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          obsidian: '#0F0F10', charcoal: '#2F3033', cleanwhite: '#FFFFFF',
+          softwhite: '#F5F3EE', gold: '#C8923A', goldbright: '#DBA44C',
+        },
+        fontFamily: { display: ['Bebas Neue', 'sans-serif'], body: ['Inter', 'sans-serif'] },
+      },
+    },
+  };
+</script>
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="font-body">
+
+<!-- HEADER -->
+<header id="site-header">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="assets/images/lg-logo-color.png" alt="LG Roofing Materials" class="h-12 w-auto">
+      </a>
+      <nav class="hidden md:flex items-center gap-9">
+        <a href="index.html#brands" class="nav-link">Our Brands</a>
+        <a href="index.html#why-us" class="nav-link">Why Us</a>
+        <a href="index.html#reviews" class="nav-link">Reviews</a>
+        <a href="index.html#location" class="nav-link">Location</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </nav>
+      <div class="hidden md:block">
+        <a href="tel:+18324300148" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call Now
+        </a>
+      </div>
+      <button id="menu-toggle" aria-label="Toggle menu" aria-expanded="false" class="md:hidden text-softwhite p-2 -mr-2">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="md:hidden overflow-hidden" style="max-height:0;">
+    <div class="px-6 pb-6 flex flex-col gap-4 border-t border-white/10 pt-4">
+      <a href="index.html#brands" class="nav-link">Our Brands</a>
+      <a href="index.html#why-us" class="nav-link">Why Us</a>
+      <a href="index.html#reviews" class="nav-link">Reviews</a>
+      <a href="index.html#location" class="nav-link">Location</a>
+      <a href="contact.html" class="nav-link active">Contact</a>
+      <a href="tel:+18324300148" class="btn btn-primary mt-2 w-full">Call Now</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="bg-glow grain">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 pt-20 pb-12 text-center reveal">
+    <span class="text-xs font-bold uppercase tracking-[0.18em] text-goldbright">Get In Touch</span>
+    <h1 class="font-display text-5xl lg:text-6xl text-white mt-4">Let's Talk About Your Roof.</h1>
+    <p class="text-softwhite/70 mt-4 max-w-xl mx-auto">Call us directly for the fastest response, or send a message below and we'll get back to you shortly.</p>
+  </div>
+</section>
+
+<!-- CONTACT GRID -->
+<section class="mx-auto max-w-7xl px-6 lg:px-8 pb-28">
+  <div class="grid lg:grid-cols-5 gap-10">
+
+    <!-- Form -->
+    <div class="lg:col-span-3 surface-floating rounded-2xl p-8 lg:p-10 reveal">
+      <h2 class="font-display text-2xl text-white">Send Us a Message</h2>
+      <p class="text-softwhite/60 text-sm mt-2">Fields marked * are required.</p>
+
+      <!--
+        TODO: Replace YOUR_FORM_ID below with your real Formspree endpoint.
+        1. Create a free account at https://formspree.io
+        2. Create a new form and verify lgroofingmaterial@gmail.com as the recipient
+        3. Copy the endpoint (looks like https://formspree.io/f/abcd1234) and paste it as the form action
+      -->
+      <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="mt-7 space-y-5">
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label for="name" class="field-label">Full Name *</label>
+            <input id="name" name="name" type="text" required class="field-input" placeholder="John Smith">
+          </div>
+          <div>
+            <label for="phone" class="field-label">Phone Number *</label>
+            <input id="phone" name="phone" type="tel" required class="field-input" placeholder="(832) 000-0000">
+          </div>
+        </div>
+        <div>
+          <label for="email" class="field-label">Email *</label>
+          <input id="email" name="email" type="email" required class="field-input" placeholder="you@email.com">
+        </div>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label for="brand" class="field-label">Brand of Interest</label>
+            <select id="brand" name="brand" class="field-input">
+              <option value="">No preference</option>
+              <option>Atlas</option>
+              <option>CertainTeed</option>
+              <option>GAF</option>
+              <option>IKO</option>
+              <option>Owens Corning</option>
+              <option>TAMKO</option>
+            </select>
+          </div>
+          <div>
+            <label for="fulfillment" class="field-label">Pickup or Delivery?</label>
+            <select id="fulfillment" name="fulfillment" class="field-input">
+              <option>Pickup</option>
+              <option>Delivery</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="message" class="field-label">Message *</label>
+          <textarea id="message" name="message" rows="5" required class="field-input" placeholder="Tell us about your project..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary w-full sm:w-auto">Send Message</button>
+        <p id="form-status" class="mt-4 text-sm font-medium"></p>
+      </form>
+    </div>
+
+    <!-- Info sidebar -->
+    <div class="lg:col-span-2 space-y-6">
+      <div class="surface-elevated rounded-2xl p-7 reveal" style="transition-delay:0.05s">
+        <h3 class="font-display text-xl text-white">Call Us Directly</h3>
+        <p class="text-softwhite/60 text-sm mt-2">Fastest way to check stock and pricing.</p>
+        <a href="tel:+18324300148" class="block text-goldbright font-semibold mt-3 hover:text-goldbright/80">(832) 430-0148</a>
+        <a href="tel:+18324300148" class="btn btn-primary w-full mt-4">Call Now</a>
+      </div>
+      <div class="surface-elevated rounded-2xl p-7 space-y-5 reveal" style="transition-delay:0.1s">
+        <div class="flex items-start gap-4">
+          <div class="h-10 w-10 rounded-lg bg-goldbright/10 border border-goldbright/30 flex items-center justify-center text-goldbright shrink-0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <p class="text-white font-semibold">214 Bluebell Road</p>
+            <p class="text-softwhite/65 text-sm">Houston, Texas 77037</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="h-10 w-10 rounded-lg bg-goldbright/10 border border-goldbright/30 flex items-center justify-center text-goldbright shrink-0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h20v12H2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          </div>
+          <div>
+            <a href="mailto:lgroofingmaterial@gmail.com" class="text-white font-semibold hover:text-goldbright">lgroofingmaterial@gmail.com</a>
+            <p class="text-softwhite/65 text-sm">We reply within one business day</p>
+          </div>
+        </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden surface-floating reveal" style="transition-delay:0.15s">
+        <iframe
+          src="https://www.google.com/maps?cid=4473104450244157714&output=embed"
+          width="100%" height="260" style="border:0; filter: grayscale(0.15) contrast(1.05);"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="LG Roofing Materials location map"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/8 bg-obsidian">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 py-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div>
+      <img src="assets/images/lg-logo-color.png" alt="LG Roofing Materials" class="h-14 w-auto">
+      <p class="text-softwhite/55 text-sm mt-4">Premium roofing materials for contractors and homeowners across Houston, TX. Pickup and delivery available.</p>
+    </div>
+    <div>
+      <h4 class="font-display text-lg text-white tracking-wide">QUICK LINKS</h4>
+      <ul class="mt-4 space-y-2.5 text-sm text-softwhite/60">
+        <li><a href="index.html#brands" class="hover:text-goldbright">Our Brands</a></li>
+        <li><a href="index.html#why-us" class="hover:text-goldbright">Why Us</a></li>
+        <li><a href="index.html#reviews" class="hover:text-goldbright">Reviews</a></li>
+        <li><a href="contact.html" class="hover:text-goldbright">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-display text-lg text-white tracking-wide">OUR BRANDS</h4>
+      <ul class="mt-4 space-y-2.5 text-sm text-softwhite/60">
+        <li><a href="brands/atlas.html" class="hover:text-goldbright">Atlas</a></li>
+        <li><a href="brands/certainteed.html" class="hover:text-goldbright">CertainTeed</a></li>
+        <li><a href="brands/gaf.html" class="hover:text-goldbright">GAF</a></li>
+        <li><a href="brands/iko.html" class="hover:text-goldbright">IKO</a></li>
+        <li><a href="brands/owens-corning.html" class="hover:text-goldbright">Owens Corning</a></li>
+        <li><a href="brands/tamko.html" class="hover:text-goldbright">TAMKO</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-display text-lg text-white tracking-wide">CONTACT</h4>
+      <ul class="mt-4 space-y-2.5 text-sm text-softwhite/60">
+        <li>214 Bluebell Road<br>Houston, Texas 77037</li>
+        <li><a href="tel:+18324300148" class="hover:text-goldbright">(832) 430-0148</a></li>
+        <li><a href="mailto:lgroofingmaterial@gmail.com" class="hover:text-goldbright">lgroofingmaterial@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/8 py-6">
+    <p class="text-center text-xs text-softwhite/40">&copy; <span id="current-year"></span> LG Roofing Materials. All rights reserved. &middot; <a href="terms.html" class="hover:text-goldbright">Terms &amp; Trademark Disclaimer</a></p>
+  </div>
+</footer>
+
+<div id="mobile-call-bar" class="bg-charcoal border-t border-white/10 p-3">
+  <a href="tel:+18324300148" class="btn btn-primary w-full">Call Now</a>
+</div>
+<div class="md:hidden h-16"></div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

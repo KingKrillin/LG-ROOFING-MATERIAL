@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CertainTeed Landmark&reg; Shingles | LG Roofing Materials — Houston, TX</title>
+<meta name="description" content="Explore CertainTeed&reg; Landmark&reg; laminated shingles. Compare available colors, see technical specs, learn about the brand, and get shingles delivered in Houston, TX from LG Roofing Materials.">
+<link rel="icon" type="image/png" href="../assets/images/lg-logo-color.png">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          obsidian: '#0F0F10', charcoal: '#2F3033', cleanwhite: '#FFFFFF',
+          softwhite: '#F5F3EE', gold: '#C8923A', goldbright: '#DBA44C',
+          ocink: '#1A1A1A', ocgray: '#666666', ocline: '#E6E6E6',
+        },
+        fontFamily: { display: ['Bebas Neue', 'sans-serif'], body: ['Inter', 'sans-serif'] },
+      },
+    },
+  };
+</script>
+<link rel="stylesheet" href="../assets/css/styles.css">
+<style>
+  /* Page-scoped: product detail theme (white / black / LG gold) */
+  .oc-section { background-color: #fff; color: var(--tw-text-opacity, 1); }
+  .oc-tab {
+    position: relative;
+    padding: 0.9rem 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #666;
+    white-space: nowrap;
+    transition: color 0.25s var(--ease-out);
+  }
+  .oc-tab::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -1px;
+    height: 3px;
+    background: #C8923A;
+    transform: scaleX(0);
+    transition: transform 0.3s var(--ease-out);
+  }
+  .oc-tab:hover { color: #1A1A1A; }
+  .oc-tab.active { color: #1A1A1A; }
+  .oc-tab.active::after { transform: scaleX(1); }
+
+  .oc-swatch {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 0.4rem;
+    border: 3px solid transparent;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 2px 6px -2px rgba(0,0,0,0.25);
+    transition: transform 0.3s var(--ease-spring), border-color 0.25s var(--ease-out), box-shadow 0.3s var(--ease-out);
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+  .oc-swatch img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .oc-swatch:hover { transform: translateY(-3px); }
+  .oc-swatch:focus-visible { outline: 2px solid #C8923A; outline-offset: 2px; }
+  .oc-swatch.active { border-color: #C8923A; box-shadow: 0 6px 16px -4px rgba(200,146,58,0.5); }
+
+  .oc-shingle-preview {
+    aspect-ratio: 4/3;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 45px -16px rgba(0,0,0,0.35), 0 6px 16px -6px rgba(0,0,0,0.18);
+    background-color: #888;
+    cursor: zoom-in;
+  }
+  .oc-shingle-preview__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.25s var(--ease-out), transform 0.6s var(--ease-out);
+  }
+  .oc-shingle-preview:hover .oc-shingle-preview__img { transform: scale(1.035); }
+  .oc-shingle-preview__img.is-loading { opacity: 0; }
+  .oc-shingle-preview::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.32), transparent 55%), linear-gradient(135deg, rgba(255,255,255,0.10), transparent 40%);
+    mix-blend-mode: multiply;
+    pointer-events: none;
+  }
+  .oc-zoom-btn {
+    position: absolute;
+    bottom: 0.9rem;
+    left: 0.9rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    background: rgba(26,26,26,0.75);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    z-index: 2;
+    transition: background 0.25s var(--ease-out), transform 0.3s var(--ease-spring);
+  }
+  .oc-zoom-btn:hover { background: #C8923A; transform: scale(1.08); }
+
+  .oc-zoom-label {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 2;
+    background: rgba(26,26,26,0.7);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Lightbox / zoom modal */
+  #oc-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(10,10,10,0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s var(--ease-out);
+    padding: 2rem;
+  }
+  #oc-lightbox.is-open { opacity: 1; visibility: visible; }
+  #oc-lightbox figure {
+    max-width: min(92vw, 1600px);
+    max-height: 88vh;
+    margin: 0;
+    transform: scale(0.96);
+    transition: transform 0.35s var(--ease-spring);
+  }
+  #oc-lightbox.is-open figure { transform: scale(1); }
+  #oc-lightbox img {
+    display: block;
+    max-width: 100%;
+    max-height: 80vh;
+    width: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6);
+  }
+  #oc-lightbox figcaption {
+    color: #fff;
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  #oc-lightbox figcaption span {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.55);
+    margin-top: 0.2rem;
+  }
+  .oc-lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.25s var(--ease-out), transform 0.3s var(--ease-spring);
+  }
+  .oc-lightbox-close:hover { background: #C8923A; transform: rotate(90deg); }
+
+  /* Hero banner */
+  .oc-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 560px;
+    display: flex;
+    align-items: flex-end;
+  }
+  .oc-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-color: #265CB2;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .oc-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to top, rgba(8,8,9,0.75) 0%, rgba(8,8,9,0.35) 45%, rgba(8,8,9,0.05) 70%, rgba(8,8,9,0.45) 100%);
+  }
+  .oc-hero__content { position: relative; width: 100%; }
+  .oc-hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(200,146,58,0.15);
+    border: 1px solid rgba(200,146,58,0.5);
+    color: #fff;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    backdrop-filter: blur(6px);
+  }
+
+  .btn-oc-outline-white {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    background: transparent; color: #fff; font-weight: 700; font-size: 0.95rem;
+    padding: 0.85rem 1.75rem; border-radius: 0.4rem; border: 1.5px solid rgba(255,255,255,0.55);
+    transition: transform 0.3s var(--ease-spring), border-color 0.25s var(--ease-out), background-color 0.25s var(--ease-out);
+  }
+  .btn-oc-outline-white:hover { border-color: #fff; background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+
+  .oc-callout {
+    background: #FBF1E0;
+    border-left: 4px solid #C8923A;
+    border-radius: 0.4rem;
+  }
+
+  .oc-feature-icon {
+    width: 4rem; height: 4rem;
+    border-radius: 9999px;
+    background: #FBF1E0;
+    color: #C8923A;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .btn-oc-primary {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    background: #C8923A; color: #fff; font-weight: 700; font-size: 0.95rem;
+    padding: 0.85rem 1.75rem; border-radius: 0.4rem;
+    transition: transform 0.3s var(--ease-spring), background-color 0.25s var(--ease-out), box-shadow 0.3s var(--ease-out);
+    box-shadow: 0 10px 25px -10px rgba(200,146,58,0.55);
+  }
+  .btn-oc-primary:hover { background: #A6752E; transform: translateY(-2px); }
+  .btn-oc-primary:focus-visible { outline: 2px solid #C8923A; outline-offset: 3px; }
+
+  .btn-oc-secondary {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    background: transparent; color: #1A1A1A; font-weight: 700; font-size: 0.95rem;
+    padding: 0.85rem 1.75rem; border-radius: 0.4rem; border: 1.5px solid #1A1A1A;
+    transition: transform 0.3s var(--ease-spring), border-color 0.25s var(--ease-out), color 0.25s var(--ease-out);
+  }
+  .btn-oc-secondary:hover { border-color: #C8923A; color: #C8923A; transform: translateY(-2px); }
+
+  .oc-card {
+    background: #fff;
+    border: 1px solid #E6E6E6;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    transition: transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-out), border-color 0.3s var(--ease-out);
+    box-shadow: 0 2px 10px -4px rgba(0,0,0,0.06);
+  }
+  .oc-card:hover { transform: translateY(-5px); box-shadow: 0 18px 34px -14px rgba(0,0,0,0.18); border-color: #ecd6a8; }
+
+  /* Quick stat band */
+  .oc-stat-band { background: #1A1A1A; }
+  .oc-stat { text-align: center; padding: 1.75rem 1rem; border-right: 1px solid rgba(255,255,255,0.1); }
+  .oc-stat:last-child { border-right: none; }
+  .oc-stat__num { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: #DBA44C; line-height: 1; }
+  .oc-stat__label { font-size: 0.72rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.4rem; }
+
+  /* External link button */
+  .btn-oc-link {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    color: #C8923A; font-weight: 700; font-size: 0.85rem;
+    border-bottom: 1.5px solid transparent;
+    transition: border-color 0.25s var(--ease-out), color 0.25s var(--ease-out);
+  }
+  .btn-oc-link:hover { border-color: #C8923A; color: #A6752E; }
+</style>
+</head>
+<body class="font-body">
+
+<!-- HEADER -->
+<header id="site-header">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="../assets/images/lg-logo-color.png" alt="LG Roofing Materials" class="h-12 w-auto">
+      </a>
+      <nav class="hidden md:flex items-center gap-9">
+        <a href="../index.html#brands" class="nav-link active">Our Brands</a>
+        <a href="../index.html#why-us" class="nav-link">Why Us</a>
+        <a href="../index.html#reviews" class="nav-link">Reviews</a>
+        <a href="../index.html#location" class="nav-link">Location</a>
+        <a href="../contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="hidden md:block">
+        <a href="tel:+18324300148" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call Now
+        </a>
+      </div>
+      <button id="menu-toggle" aria-label="Toggle menu" aria-expanded="false" class="md:hidden text-softwhite p-2 -mr-2">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="md:hidden overflow-hidden" style="max-height:0;">
+    <div class="px-6 pb-6 flex flex-col gap-4 border-t border-white/10 pt-4">
+      <a href="../index.html#brands" class="nav-link active">Our Brands</a>
+      <a href="../index.html#why-us" class="nav-link">Why Us</a>
+      <a href="../index.html#reviews" class="nav-link">Reviews</a>
+      <a href="../index.html#location" class="nav-link">Location</a>
+      <a href="../contact.html" class="nav-link">Contact</a>
+      <a href="tel:+18324300148" class="btn btn-primary mt-2 w-full">Call Now</a>
+    </div>
+  </div>
+</header>
+
+<!-- PRODUCT HERO -->
+<section class="oc-hero">
+  <div class="oc-hero__bg" style="background-image:url('../assets/images/logo-CertainTeed.png');"></div>
+  <div class="oc-hero__overlay"></div>
+  <div class="oc-hero__content mx-auto max-w-7xl px-6 lg:px-8 py-14">
+    <nav class="text-xs text-white/60" aria-label="Breadcrumb">
+      <a href="../index.html#brands" class="hover:text-white">All Brand Partners</a>
+      <span class="mx-1.5">/</span>
+      <span class="text-white font-medium">CertainTeed Landmark&reg; Shingles</span>
+    </nav>
+
+    <span class="oc-hero-badge mt-5">Manufactured by CertainTeed</span>
+    <h1 class="font-display text-6xl lg:text-7xl text-white mt-4 tracking-tight">LANDMARK<span class="align-top text-3xl">&reg;</span></h1>
+    <p class="text-white/75 text-base lg:text-lg mt-2 max-w-xl">A dual-layer dimensional shingle rated UL 2218 Class 3 for impact resistance and Class A for fire resistance &mdash; with one of the widest color lineups in the industry.</p>
+
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a href="https://www.certainteed.com/products/residential-roofing-products/landmark" target="_blank" rel="noopener" class="btn-oc-primary">
+        View Official Landmark Page
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+      </a>
+      <a href="#contractor" class="btn-oc-outline-white">Get It From LG Roofing</a>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK STATS -->
+<section class="oc-stat-band">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 grid grid-cols-2 sm:grid-cols-4">
+    <div class="oc-stat">
+      <div class="oc-stat__num">Lifetime</div>
+      <div class="oc-stat__label">Limited Warranty</div>
+    </div>
+    <div class="oc-stat">
+      <div class="oc-stat__num">UL 2218</div>
+      <div class="oc-stat__label">Class 3 Impact Rating</div>
+    </div>
+    <div class="oc-stat">
+      <div class="oc-stat__num">Class A</div>
+      <div class="oc-stat__label">Fire Resistance Rating</div>
+    </div>
+    <div class="oc-stat">
+      <div class="oc-stat__num">Dual-Layer</div>
+      <div class="oc-stat__label">Shingle Construction</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT CERTAINTEED -->
+<section class="surface-elevated border-y border-white/8">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 py-20">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="reveal">
+        <span class="text-xs font-bold uppercase tracking-[0.18em] text-goldbright">About CERTAINTEED</span>
+        <h2 class="font-display text-3xl lg:text-4xl text-white mt-3">WHO IS CERTAINTEED</h2>
+        <p class="text-softwhite/75 text-[15px] leading-relaxed mt-5">CertainTeed has been a trusted name in building products since 1904 and is part of Saint-Gobain, a global leader in sustainable construction materials.</p>
+        <p class="text-softwhite/75 text-[15px] leading-relaxed mt-4">Their Landmark series is one of the most popular dimensional shingle lines in the country, prized for its rich color blends and StreakFighter&reg; algae resistance.</p>
+        <a href="https://www.certainteed.com" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-bold text-goldbright hover:text-gold transition-colors mt-7">
+          Learn About CertainTeed
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+        </a>
+      </div>
+      <div class="reveal" style="transition-delay:0.1s">
+        <div class="rounded-2xl overflow-hidden surface-floating max-w-md mx-auto">
+          <img src="../assets/images/logo-CertainTeed.png" alt="CERTAINTEED logo" class="w-full h-auto">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TAB NAV -->
+<section class="oc-section">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="flex gap-7 overflow-x-auto border-b border-ocline">
+      <a href="#colors" class="oc-tab active">Color &amp; Imagery</a>
+      <a href="#contractor" class="oc-tab">Buy Your Shingles Today</a>
+    </div>
+  </div>
+</section>
+
+<!-- COLOR & IMAGERY -->
+<section id="colors" class="oc-section">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 py-14">
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+      <!-- Copy + Swatch Picker -->
+      <div>
+        <span class="text-xs font-bold uppercase tracking-[0.18em] text-gold">Color &amp; Imagery</span>
+        <h2 class="font-display text-3xl lg:text-4xl text-ocink tracking-tight mt-2">DURABILITY MEETS DESIGN</h2>
+        <p class="text-ocgray text-[15px] leading-relaxed mt-5">Landmark&reg; pairs a dual-layer laminated build with one of the widest color lineups in the industry. Each blend is engineered to hold its richness over time, so the look you choose today is the look you keep for years.</p>
+
+        <div class="grid grid-cols-3 sm:grid-cols-6 gap-3 mt-8" id="swatch-grid" role="list" aria-label="Landmark shingle colors"></div>
+
+        <div class="mt-6">
+          <p class="text-xs font-semibold uppercase tracking-wide text-ocgray">Color Selected</p>
+          <p class="font-display text-2xl text-ocink mt-1" id="color-name">Resawn Shake</p>
+          <p class="text-ocgray text-sm mt-1" id="color-desc">A warm tan and driftwood-brown blend with light beige flecks.</p>
+          <a id="ct-color-link" href="#" target="_blank" rel="noopener" class="btn-oc-link mt-3">
+            View this color on CertainTeed.com
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+          </a>
+        </div>
+
+        <div class="oc-callout p-5 mt-7">
+          <p class="text-sm text-ocink leading-relaxed"><span class="font-bold text-gold">Color Accuracy:</span> Screens render color differently from one device to the next, so treat what you see here as a starting point rather than a perfect match. Use this page to narrow down your favorites, then reach out to LG Roofing Materials for a physical sample &mdash; viewing the shingle against your home in real daylight is the best way to lock in your final color before installation.</p>
+        </div>
+      </div>
+
+      <!-- Imagery -->
+      <div>
+        <div class="oc-shingle-preview" id="shingle-preview-trigger" role="button" tabindex="0" aria-label="Click to view full-size shingle texture">
+          <img class="oc-shingle-preview__img" id="shingle-preview-img" src="" alt="Landmark shingle close-up texture">
+          <button class="oc-zoom-btn" aria-label="View full-size shingle texture" type="button" id="zoom-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </button>
+          <span class="oc-zoom-label">Click to Zoom</span>
+        </div>
+        <div class="oc-shingle-preview mt-4" style="aspect-ratio:4/3;cursor:default;" id="house-preview-wrap">
+          <img class="oc-shingle-preview__img" id="house-preview-img" src="" alt="Home installed with Landmark shingles">
+        </div>
+        <a href="https://www.certainteed.com/products/residential-roofing-products/landmark" target="_blank" rel="noopener" id="ct-more-photos" class="w-full btn-oc-secondary mt-4 text-sm">
+          See More Photos on CertainTeed.com
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUY YOUR SHINGLES TODAY -->
+<section id="contractor" class="oc-section border-t border-ocline">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 py-16">
+    <span class="text-xs font-bold uppercase tracking-[0.18em] text-gold">Buy Your Shingles Today</span>
+    <h2 class="font-display text-3xl lg:text-4xl text-ocink mt-2">GET YOUR LANDMARK ROOF IN HOUSTON, TX</h2>
+    <p class="text-ocgray text-[15px] mt-4 max-w-2xl">LG Roofing Materials stocks CertainTeed&reg; Landmark&reg; shingles for pickup and delivery across the Houston area. Call us directly for current pricing, color availability, and contractor referrals.</p>
+
+    <div class="oc-card p-7 mt-8 max-w-xl flex flex-col sm:flex-row sm:items-center gap-6">
+      <div class="flex-1">
+        <h3 class="font-display text-2xl text-ocink tracking-wide">LG ROOFING MATERIALS</h3>
+        <p class="text-ocgray text-sm mt-1">214 Bluebell Road, Houston, Texas 77037</p>
+      </div>
+      <div class="flex gap-3">
+        <a href="tel:+18324300148" class="btn-oc-primary">Call Now</a>
+        <a href="../contact.html" class="btn-oc-secondary">Get a Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OTHER BRANDS -->
+<section class="surface-elevated border-y border-white/8">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 py-14 text-center">
+    <span class="text-xs font-bold uppercase tracking-[0.18em] text-goldbright">Explore More</span>
+    <h3 class="font-display text-2xl text-white mt-2 mb-6">Other Brand Partners</h3>
+    <div class="flex flex-wrap justify-center gap-3">
+        <a href="atlas.html" class="surface-elevated rounded-lg px-4 py-2.5 text-sm font-semibold text-softwhite/80 hover:text-goldbright hover:border-goldbright/40 transition-colors">ATLAS</a>
+        <a href="gaf.html" class="surface-elevated rounded-lg px-4 py-2.5 text-sm font-semibold text-softwhite/80 hover:text-goldbright hover:border-goldbright/40 transition-colors">GAF</a>
+        <a href="iko.html" class="surface-elevated rounded-lg px-4 py-2.5 text-sm font-semibold text-softwhite/80 hover:text-goldbright hover:border-goldbright/40 transition-colors">IKO</a>
+        <a href="owens-corning.html" class="surface-elevated rounded-lg px-4 py-2.5 text-sm font-semibold text-softwhite/80 hover:text-goldbright hover:border-goldbright/40 transition-colors">OWENS CORNING</a>
+        <a href="tamko.html" class="surface-elevated rounded-lg px-4 py-2.5 text-sm font-semibold text-softwhite/80 hover:text-goldbright hover:border-goldbright/40 transition-colors">TAMKO</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bg-glow">
+  <div class="mx-auto max-w-4xl px-6 lg:px-8 py-24 text-center reveal">
+    <h2 class="font-display text-4xl lg:text-5xl text-white">Ready For Landmark Shingles?</h2>
+    <p class="text-softwhite/70 mt-4 max-w-xl mx-auto">Available for pickup or delivery in Houston, TX. Call now or send us your project details.</p>
+    <div class="mt-9 flex flex-wrap justify-center gap-4">
+      <a href="tel:+18324300148" class="btn btn-primary text-base px-8 py-4">Call Now</a>
+      <a href="../contact.html" class="btn btn-secondary text-base px-8 py-4">Get a Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/8 bg-obsidian">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 py-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div>
+      <img src="../assets/images/lg-logo-color.png" alt="LG Roofing Materials" class="h-14 w-auto">
+      <p class="text-softwhite/55 text-sm mt-4">Premium roofing materials for contractors and homeowners across Houston, TX. Pickup and delivery available.</p>
+    </div>
+    <div>
+      <h4 class="font-display text-lg text-white tracking-wide">QUICK LINKS</h4>
+      <ul class="mt-4 space-y-2.5 text-sm text-softwhite/60">
+        <li><a href="../index.html#brands" class="hover:text-goldbright">Our Brands</a></li>
+        <li><a href="../index.html#why-us" class="hover:text-goldbright">Why Us</a></li>
+        <li><a href="../index.html#reviews" class="hover:text-goldbright">Reviews</a></li>
+        <li><a href="../contact.html" class="hover:text-goldbright">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-display text-lg text-white tracking-wide">OUR BRANDS</h4>
+      <ul class="mt-4 space-y-2.5 text-sm text-softwhite/60">
+        <li><a href="atlas.html" class="hover:text-goldbright">Atlas</a></li>
+        <li><a href="certainteed.html" class="hover:text-goldbright">CertainTeed</a></li>
+        <li><a href="gaf.html" class="hover:text-goldbright">GAF</a></li>
+        <li><a href="iko.html" class="hover:text-goldbright">IKO</a></li>
+        <li><a href="owens-corning.html" class="hover:text-goldbright">Owens Corning</a></li>
+        <li><a href="tamko.html" class="hover:text-goldbright">TAMKO</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-display text-lg text-white tracking-wide">CONTACT</h4>
+      <ul class="mt-4 space-y-2.5 text-sm text-softwhite/60">
+        <li>214 Bluebell Road<br>Houston, Texas 77037</li>
+        <li><a href="tel:+18324300148" class="hover:text-goldbright">(832) 430-0148</a></li>
+        <li><a href="mailto:lgroofingmaterial@gmail.com" class="hover:text-goldbright">lgroofingmaterial@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/8 py-6">
+    <p class="text-center text-xs text-softwhite/40">&copy; <span id="current-year"></span> LG Roofing Materials. All rights reserved. &middot; <a href="../terms.html" class="hover:text-goldbright">Terms &amp; Trademark Disclaimer</a></p>
+  </div>
+</footer>
+
+<div id="mobile-call-bar" class="bg-charcoal border-t border-white/10 p-3">
+  <a href="tel:+18324300148" class="btn btn-primary w-full">Call Now</a>
+</div>
+<div class="md:hidden h-16"></div>
+
+<!-- ZOOM LIGHTBOX -->
+<div id="oc-lightbox" role="dialog" aria-modal="true" aria-label="Zoomed shingle image">
+  <button class="oc-lightbox-close" id="lightbox-close" aria-label="Close zoom">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <figure>
+    <img id="lightbox-img" src="" alt="">
+    <figcaption id="lightbox-caption">
+      <span id="lightbox-sub">CertainTeed Landmark&reg;</span>
+    </figcaption>
+  </figure>
+</div>
+
+<script src="../assets/js/main.js"></script>
+<script>
+  // Landmark color swatch picker — each color uses real CertainTeed product photography
+  const SHINGLE_BASE = '../assets/images/shingles/landmark/';
+  const CT_PRODUCT_URL = 'https://www.certainteed.com/products/residential-roofing-products/landmark?marketingColor=';
+  const LANDMARK_COLORS = [
+    { name: 'Resawn Shake',    slug: 'resawn-shake',    desc: 'A warm tan and driftwood-brown blend with light beige flecks.' },
+    { name: 'Georgetown Gray', slug: 'georgetown-gray', desc: 'A cool charcoal-gray blend with a subtle taupe undertone.' },
+    { name: 'Burnt Sienna',    slug: 'burnt-sienna',    desc: 'A rusty, reddish-brown terracotta blend.' },
+    { name: 'Moire Black',     slug: 'moire-black',     desc: 'A deep charcoal-black blend with a slight blue-gray undertone.' },
+    { name: 'Heather Blend',   slug: 'heather-blend',   desc: 'A medium brown-gray blend with warm heather flecks.' },
+    { name: 'Weathered Wood',  slug: 'weathered-wood',  desc: 'A versatile grayish-brown blend with warm driftwood undertones.' },
+  ];
+  const DEFAULT_COLOR = 'Resawn Shake';
+  let currentColor = null;
+
+  function selectColor(name) {
+    const color = LANDMARK_COLORS.find(c => c.name === name) || LANDMARK_COLORS[0];
+    currentColor = color;
+    document.getElementById('color-name').textContent = color.name;
+    document.getElementById('color-desc').textContent = color.desc;
+
+    const link = document.getElementById('ct-color-link');
+    link.href = `${CT_PRODUCT_URL}${color.name.replace(/ /g, '_')}`;
+
+    const morePhotos = document.getElementById('ct-more-photos');
+    if (morePhotos) morePhotos.href = `${CT_PRODUCT_URL}${color.name.replace(/ /g, '_')}`;
+
+    const previewImg = document.getElementById('shingle-preview-img');
+    previewImg.classList.add('is-loading');
+    previewImg.src = `${SHINGLE_BASE}${color.slug}-texture.jpg`;
+    previewImg.alt = `CertainTeed Landmark ${color.name} shingle close-up texture`;
+    previewImg.onload = () => previewImg.classList.remove('is-loading');
+
+    const houseImg = document.getElementById('house-preview-img');
+    houseImg.classList.add('is-loading');
+    houseImg.src = `${SHINGLE_BASE}${color.slug}-house.jpg`;
+    houseImg.alt = `Home installed with CertainTeed Landmark ${color.name} shingles`;
+    houseImg.onload = () => houseImg.classList.remove('is-loading');
+
+    document.querySelectorAll('.oc-swatch').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.name === color.name);
+      btn.setAttribute('aria-pressed', String(btn.dataset.name === color.name));
+    });
+  }
+
+  function openLightbox() {
+    if (!currentColor) return;
+    const lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = `${SHINGLE_BASE}${currentColor.slug}-texture.jpg`;
+    lightboxImg.alt = `CertainTeed Landmark ${currentColor.name} shingle close-up`;
+    document.getElementById('lightbox-sub').innerHTML = `${currentColor.name} &middot; CertainTeed Landmark&reg;`;
+    document.getElementById('oc-lightbox').classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('oc-lightbox').classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  const grid = document.getElementById('swatch-grid');
+  LANDMARK_COLORS.forEach(color => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'oc-swatch';
+    btn.dataset.name = color.name;
+    btn.setAttribute('role', 'listitem');
+    btn.setAttribute('aria-label', color.name);
+    btn.setAttribute('aria-pressed', 'false');
+    btn.innerHTML = `<img src="${SHINGLE_BASE}${color.slug}-thumb.jpg" alt="${color.name} shingle swatch" loading="lazy">`;
+    btn.addEventListener('click', () => selectColor(color.name));
+    grid.appendChild(btn);
+  });
+
+  selectColor(DEFAULT_COLOR);
+
+  document.getElementById('shingle-preview-trigger').addEventListener('click', openLightbox);
+  document.getElementById('shingle-preview-trigger').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(); }
+  });
+  document.getElementById('zoom-btn').addEventListener('click', (e) => { e.stopPropagation(); openLightbox(); });
+  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  document.getElementById('oc-lightbox').addEventListener('click', (e) => {
+    if (e.target.id === 'oc-lightbox') closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+</body>
+</html>
