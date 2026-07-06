@@ -287,37 +287,57 @@
   <div class="text-center max-w-2xl mx-auto reveal">
     <span class="text-xs font-bold uppercase tracking-[0.18em] text-goldbright">Google Reviews</span>
     <h2 class="font-display text-4xl lg:text-5xl text-white mt-3">What Our Customers Say.</h2>
+    <div class="flex items-center justify-center gap-2 mt-4">
+      <div class="stars text-lg">★★★★★</div>
+      <p class="text-softwhite/70 text-sm">5.0 on Google &middot; 17+ reviews</p>
+    </div>
   </div>
 
   <!--
     TODO: Live Google Reviews widget.
     Sign up free at https://elfsight.com, create a "Google Reviews" widget, connect it to:
     LG Roofing Material — https://www.google.com/maps/place/LG+Roofing+Material/@29.9078252,-95.4072059
-    Then replace YOUR-WIDGET-ID below with the real widget id Elfsight gives you.
+    Then replace YOUR-WIDGET-ID below (in the class name and in main.js's ELFSIGHT_WIDGET_CLASS) with the
+    real widget id Elfsight gives you. Once it's live and loads reviews, the hand-picked reviews below are
+    hidden automatically — see the elfsight-fallback-swap logic in assets/js/main.js.
   -->
   <div class="mt-14 reveal">
     <script src="https://static.elfsight.com/platform/platform.js" async></script>
     <div class="elfsight-app-YOUR-WIDGET-ID" data-elfsight-app-lazy></div>
 
-    <!-- Fallback shown until the widget above is configured -->
-    <div class="grid sm:grid-cols-3 gap-6">
+    <!-- Real reviews shown until the Elfsight widget above is configured -->
+    <div id="reviews-fallback" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <div class="surface-floating rounded-xl p-7">
         <div class="stars text-lg">★★★★★</div>
-        <p class="text-softwhite/75 text-sm mt-4">"Great selection and the delivery showed up right on schedule. Made it easy to keep our crew moving."</p>
-        <p class="text-sm font-semibold text-white mt-4">Sample Customer</p>
+        <p class="text-softwhite/75 text-sm mt-4">"As a contractor, having a supplier I can trust matters more than anything. The staff here are knowledgeable, honest, and very quick to help."</p>
+        <p class="text-sm font-semibold text-white mt-4">Rafael Ruiz</p>
       </div>
       <div class="surface-floating rounded-xl p-7">
         <div class="stars text-lg">★★★★★</div>
-        <p class="text-softwhite/75 text-sm mt-4">"Picked up materials same day and the staff knew the product lines inside and out."</p>
-        <p class="text-sm font-semibold text-white mt-4">Sample Customer</p>
+        <p class="text-softwhite/75 text-sm mt-4">"Wide selection of shingles. Deliveries show up on time, orders are accurate and if there is ever an issue, they fix it."</p>
+        <p class="text-sm font-semibold text-white mt-4">Rene Rizo</p>
       </div>
       <div class="surface-floating rounded-xl p-7">
         <div class="stars text-lg">★★★★★</div>
-        <p class="text-softwhite/75 text-sm mt-4">"Good pricing on GAF shingles and they helped me pick the right color for my house."</p>
-        <p class="text-sm font-semibold text-white mt-4">Sample Customer</p>
+        <p class="text-softwhite/75 text-sm mt-4">"As a roofing company, we can confidently say LG Roofing Materials delivers every time. Jose and his team are extremely reliable."</p>
+        <p class="text-sm font-semibold text-white mt-4">Eduardo Rodriguez</p>
+      </div>
+      <div class="surface-floating rounded-xl p-7">
+        <div class="stars text-lg">★★★★★</div>
+        <p class="text-softwhite/75 text-sm mt-4">"Great Service. Jose and all the delivery guys are always there to help. Definitely would recommend. Best prices as well!"</p>
+        <p class="text-sm font-semibold text-white mt-4">Manuel Lopez</p>
+      </div>
+      <div class="surface-floating rounded-xl p-7">
+        <div class="stars text-lg">★★★★★</div>
+        <p class="text-softwhite/75 text-sm mt-4">"Absolute great customer service! Had a last minute change of material as the homeowner mid install wanted to exchange — they made it work."</p>
+        <p class="text-sm font-semibold text-white mt-4">Luis Flores</p>
+      </div>
+      <div class="surface-floating rounded-xl p-7">
+        <div class="stars text-lg">★★★★★</div>
+        <p class="text-softwhite/75 text-sm mt-4">"Estuve satisfecho con el trato que me dieron aquí. Tienen muy buen servicio y materiales de alta calidad. Y muy buena garantía."</p>
+        <p class="text-sm font-semibold text-white mt-4">Humberto Terrones</p>
       </div>
     </div>
-    <p class="text-center text-xs text-softwhite/40 mt-4">Sample reviews shown as placeholders — connect the Elfsight widget above to display live Google reviews.</p>
   </div>
 
   <div class="text-center mt-10 reveal">

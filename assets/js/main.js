@@ -52,6 +52,70 @@ document.addEventListener('DOMContentLoaded', () => {
     revealEls.forEach((el) => el.classList.add('is-visible'));
   }
 
+  // Reviews: hide the hand-picked fallback once the live Elfsight widget actually renders content
+  const elfsightEl = document.querySelector('[class*="elfsight-app-"]');
+  const reviewsFallback = document.getElementById('reviews-fallback');
+  if (elfsightEl && reviewsFallback && !elfsightEl.className.includes('elfsight-app-YOUR-WIDGET-ID')) {
+    const hideFallbackIfLoaded = () => {
+      if (elfsightEl.childElementCount > 0) {
+        reviewsFallback.style.display = 'none';
+        elfsightObserver.disconnect();
+      }
+    };
+    const elfsightObserver = new MutationObserver(hideFallbackIfLoaded);
+    elfsightObserver.observe(elfsightEl, { childList: true });
+    hideFallbackIfLoaded();
+  }
+
+  // Marquee: JS rAF scroller — pixel-perfect seamless loop, no CSS animation gap
+  const marqueeTrack = document.querySelector('.marquee__track');
+  if (marqueeTrack) {
+    const marqueeEl = marqueeTrack.closest('.marquee');
+    let pos = 0;
+    let oneSetWidth = 0;
+    let paused = false;
+    let lastTs = null;
+    const SPEED = 52; // px per second
+
+    const measureSet = () => {
+      const logos = marqueeTrack.querySelectorAll('.marquee__logo');
+      const half = Math.floor(logos.length / 2);
+      let w = 0;
+      for (let i = 0; i < half; i++) {
+        const el = logos[i];
+        w += el.getBoundingClientRect().width +
+             (parseFloat(getComputedStyle(el).marginRight) || 0);
+      }
+      oneSetWidth = w;
+    };
+
+    const tick = (ts) => {
+      if (lastTs !== null && !paused && oneSetWidth > 0) {
+        pos += SPEED * ((ts - lastTs) / 1000);
+        if (pos >= oneSetWidth) pos -= oneSetWidth;
+        marqueeTrack.style.transform = `translateX(-${pos}px)`;
+      }
+      lastTs = ts;
+      requestAnimationFrame(tick);
+    };
+
+    if (marqueeEl) {
+      marqueeEl.addEventListener('mouseenter', () => { paused = true; });
+      marqueeEl.addEventListener('mouseleave', () => { paused = false; });
+    }
+
+    const imgs = Array.from(marqueeTrack.querySelectorAll('img'));
+    Promise.all(imgs.map(img =>
+      img.complete ? Promise.resolve() :
+      new Promise(r => { img.onload = r; img.onerror = r; })
+    )).then(() => {
+      measureSet();
+      requestAnimationFrame(tick);
+    });
+
+    window.addEventListener('resize', measureSet);
+  }
+
   // Footer year
   const yearEl = document.getElementById('current-year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();

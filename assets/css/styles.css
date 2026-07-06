@@ -302,12 +302,7 @@ h1.font-display, h2.font-display, h3.font-display {
   display: flex;
   align-items: center;
   width: max-content;
-  animation: marquee-scroll 32s linear infinite;
-}
-.marquee:hover .marquee__track { animation-play-state: paused; }
-@keyframes marquee-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  will-change: transform;
 }
 .marquee__logo {
   flex: 0 0 auto;
