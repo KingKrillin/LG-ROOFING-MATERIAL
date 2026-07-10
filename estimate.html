@@ -80,28 +80,30 @@
     --sidebar-left: calc((100vw - var(--container-w)) / 2 + 2rem + 3 * var(--col-unit) + 6rem);
     --sidebar-width: calc(2 * var(--col-unit) + 2rem);
   }
-  .summary-card {
-    max-height: 80vh;
-    display: flex;
-    flex-direction: column;
-  }
   @media (min-width: 1024px) {
+    /* Only needed on desktop, where the card is fixed/floating and must not
+       exceed the viewport height. On mobile the card is a normal in-flow
+       block below the form — it should just grow to fit its content and
+       let the page scroll normally, not grow its own nested scrollbar. */
     .summary-card {
       position: fixed;
       top: 50%;
       left: var(--sidebar-left);
       width: var(--sidebar-width);
       transform: translateY(-50%);
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
     }
     /* .surface-floating:hover normally lifts cards with its own transform —
        that would cancel the centering above every time the cursor is over
        this card, so re-assert it on hover. */
     .summary-card:hover { transform: translateY(-50%); }
-  }
-  #summary-line-items {
-    overflow-y: auto;
-    min-height: 0;
-    flex: 1 1 auto;
+    #summary-line-items {
+      overflow-y: auto;
+      min-height: 0;
+      flex: 1 1 auto;
+    }
   }
   #summary-line-items::-webkit-scrollbar { width: 6px; }
   #summary-line-items::-webkit-scrollbar-track { background: transparent; }
@@ -300,11 +302,11 @@
 
           <div class="addon-row">
             <span class="text-white font-semibold text-sm">Ridge Vent</span>
-            <div class="grid sm:grid-cols-3 gap-4 mt-3">
+            <div class="grid sm:grid-cols-2 gap-4 mt-3">
               <select id="ridgevent-brand" class="field-input"></select>
               <select id="ridgevent-product" class="field-input"></select>
-              <input id="ridgevent-qty" type="number" min="0" step="1" class="addon-qty" placeholder="Pieces">
             </div>
+            <input id="ridgevent-qty" type="number" min="0" step="1" class="addon-qty mt-3" placeholder="Pieces">
           </div>
 
           <div class="addon-row">

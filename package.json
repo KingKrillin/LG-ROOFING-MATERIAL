@@ -1,0 +1,9 @@
+{
+  "name": "lg-roofing-materials",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LG Roofing Materials website. Static site, plus one Vercel serverless function for the estimate shadow-copy email.",
+  "dependencies": {
+    "resend": "^6.17.2"
+  }
+}

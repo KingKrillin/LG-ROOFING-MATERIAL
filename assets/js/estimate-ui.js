@@ -229,6 +229,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   // for staff to confirm/fulfill the order, never rendered on screen.
   const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mlgyvdvn';
 
+  // Shadow copy: every submission also goes here, as an independent channel
+  // while the main inbox's delivery is still unverified. This hits our own
+  // Vercel serverless function (api/shadow-estimate.js), which sends via
+  // Resend directly — no third-party form service involved for this copy.
+  const SHADOW_ENDPOINT = '/api/shadow-estimate';
+
   function buildStaffSummaryText(result, input) {
     const lines = result.lineItems.map((li) =>
       `${li.confidence !== 'confirmed' ? '[VERIFY] ' : ''}${li.label} — ${li.qty} ${li.unit}(s) x ${money(li.unitPrice)} = ${money(li.cost)}`
@@ -260,6 +266,28 @@ document.addEventListener('DOMContentLoaded', async () => {
     payload.append('fulfillment', input.fulfillment);
     payload.append('estimate_total', money(result.total));
     payload.append('estimate_breakdown', buildStaffSummaryText(result, input));
+
+    // Fire the shadow copy in parallel — it must never block or fail the
+    // customer-facing submission. Its outcome is only logged to the console
+    // for whoever's debugging delivery, never shown in the UI.
+    fetch(SHADOW_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: $('est-name').value,
+        phone: $('est-phone').value,
+        email: $('est-email').value,
+        address: $('est-address').value,
+        notes: $('est-notes').value,
+        fulfillment: input.fulfillment,
+        estimate_total: money(result.total),
+        estimate_breakdown: buildStaffSummaryText(result, input),
+      }),
+    }).then((res) => {
+      console.log(`[shadow copy] ${res.ok ? 'sent' : 'failed'} (HTTP ${res.status})`);
+    }).catch((err) => {
+      console.log('[shadow copy] failed:', err.message);
+    });
 
     try {
       const res = await fetch(FORMSPREE_ENDPOINT, {
