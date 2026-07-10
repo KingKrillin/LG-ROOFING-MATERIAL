@@ -122,9 +122,8 @@ function buildEstimate(catalog, input) {
   const materialsSubtotal = money(lineItems.reduce((sum, li) => sum + li.cost, 0));
   const fulfillmentFee = input.fulfillment === 'delivery' ? meta.deliveryFee : meta.pickupFee;
   const total = money(materialsSubtotal + fulfillmentFee);
-  const flaggedCount = lineItems.filter((li) => li.confidence !== 'confirmed').length;
 
-  return { lineItems, materialsSubtotal, fulfillmentFee, total, flaggedCount };
+  return { lineItems, materialsSubtotal, fulfillmentFee, total };
 }
 
 // Exposed as a plain global — this site has no build step / module bundler.

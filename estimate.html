@@ -66,13 +66,50 @@
   .addon-toggle-icon { transition: transform 0.25s var(--ease-out); }
   details[open] .addon-toggle-icon { transform: rotate(180deg); }
 
-  /* Summary sidebar */
-  .summary-card { position: sticky; top: 6.5rem; }
+  /* Summary sidebar: pinned to the exact vertical center of the viewport at
+     all times (position: fixed, not sticky) — it does not move as the page
+     scrolls, the user never has to scroll back up to see the running total.
+     Since `fixed` ignores the grid entirely, --sidebar-left/--sidebar-width
+     recompute where the lg:col-span-2 grid cell would have placed it, so it
+     still lines up with the form column instead of floating at a fixed pixel
+     offset that breaks on different screen widths. */
+  :root {
+    --container-w: min(100vw, 80rem);
+    --content-w: calc(var(--container-w) - 4rem);
+    --col-unit: calc((var(--content-w) - 8rem) / 5);
+    --sidebar-left: calc((100vw - var(--container-w)) / 2 + 2rem + 3 * var(--col-unit) + 6rem);
+    --sidebar-width: calc(2 * var(--col-unit) + 2rem);
+  }
+  .summary-card {
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+  }
+  @media (min-width: 1024px) {
+    .summary-card {
+      position: fixed;
+      top: 50%;
+      left: var(--sidebar-left);
+      width: var(--sidebar-width);
+      transform: translateY(-50%);
+    }
+    /* .surface-floating:hover normally lifts cards with its own transform —
+       that would cancel the centering above every time the cursor is over
+       this card, so re-assert it on hover. */
+    .summary-card:hover { transform: translateY(-50%); }
+  }
+  #summary-line-items {
+    overflow-y: auto;
+    min-height: 0;
+    flex: 1 1 auto;
+  }
+  #summary-line-items::-webkit-scrollbar { width: 6px; }
+  #summary-line-items::-webkit-scrollbar-track { background: transparent; }
+  #summary-line-items::-webkit-scrollbar-thumb { background: rgba(200,146,58,0.35); border-radius: 3px; }
   .line-item { display: flex; justify-content: space-between; gap: 0.75rem; font-size: 0.85rem; padding: 0.55rem 0; border-bottom: 1px solid rgba(245,243,238,0.06); }
   .line-item:last-child { border-bottom: none; }
   .line-item .li-name { color: var(--soft-white); }
   .line-item .li-qty { color: rgba(245,243,238,0.6); white-space: nowrap; }
-  .li-flag { color: #E6A032; font-weight: 700; }
   .empty-summary { font-size: 0.85rem; color: rgba(245,243,238,0.45); padding: 1rem 0; text-align: center; }
 </style>
 </head>
@@ -374,9 +411,8 @@
 
     <!-- Summary sidebar -->
     <div class="lg:col-span-2">
-      <div class="summary-card surface-floating rounded-2xl p-7 reveal">
+      <div class="summary-card surface-floating rounded-2xl p-7">
         <h3 class="font-display text-xl text-white">Your Materials List</h3>
-        <p id="summary-flag-note" class="text-xs text-goldbright/90 mt-1" style="display:none;"><span class="li-flag">&#9888;</span> Some items are marked "verify" — our team double-checks these before confirming.</p>
         <div id="summary-line-items" class="mt-4"><p class="empty-summary">Start with your shingle and squares to see your materials list.</p></div>
         <div class="border-t border-white/10 mt-2 pt-4 space-y-1.5 text-sm">
           <div class="flex justify-between text-softwhite/70"><span id="summary-fee-label">Pickup</span><span id="summary-fee">$0.00</span></div>

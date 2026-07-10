@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     } else {
       container.innerHTML = result.lineItems.map((li) => `
         <div class="line-item">
-          <span class="li-name">${li.confidence !== 'confirmed' ? '<span class="li-flag" title="Our team double-checks this one before confirming">&#9888;</span> ' : ''}${li.label}</span>
+          <span class="li-name">${li.label}</span>
           <span class="li-qty">${li.qty} ${li.unit}${li.qty === 1 ? '' : 's'}</span>
         </div>
       `).join('');
@@ -204,7 +204,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     $('summary-fee-label').textContent = result.fulfillmentFee > 0 ? 'Delivery Fee' : 'Pickup';
     $('summary-fee').textContent = money(result.fulfillmentFee);
     $('summary-total').textContent = money(result.total);
-    $('summary-flag-note').style.display = result.flaggedCount > 0 ? 'block' : 'none';
   }
 
   function recalc() {
