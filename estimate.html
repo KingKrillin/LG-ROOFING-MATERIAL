@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get an Instant Estimate | LG Roofing Materials — Houston, TX</title>
+<meta name="description" content="Build your own roofing material list and get an instant estimate from LG Roofing Materials in Houston, TX. Shingles, starter, hip & ridge, underlayment, and more — confirmed by our team by end of business day.">
+<link rel="icon" type="image/png" href="assets/images/lg-logo-color.png">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          obsidian: '#0F0F10', charcoal: '#2F3033', cleanwhite: '#FFFFFF',
+          softwhite: '#F5F3EE', gold: '#C8923A', goldbright: '#DBA44C',
+        },
+        fontFamily: { display: ['Bebas Neue', 'sans-serif'], body: ['Inter', 'sans-serif'] },
+      },
+    },
+  };
+</script>
+<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+  /* Page-scoped: estimate wizard */
+  .step-card { background-color: #1a1a1c; border: 1px solid rgba(245,243,238,0.08); border-radius: 1rem; padding: 1.75rem; }
+  @media (min-width: 1024px) { .step-card { padding: 2.25rem; } }
+  .step-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 1.9rem; height: 1.9rem; border-radius: 9999px;
+    background: rgba(200,146,58,0.12); border: 1px solid rgba(200,146,58,0.4);
+    color: #DBA44C; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.85rem;
+    flex: none;
+  }
+  .bundle-readout {
+    font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.9rem;
+    color: #DBA44C; white-space: nowrap;
+  }
+  .brand-warning {
+    display: none; font-size: 0.82rem; line-height: 1.5; color: #f0c98e;
+    background: rgba(230,160,50,0.1); border: 1px solid rgba(230,160,50,0.35);
+    border-radius: 0.5rem; padding: 0.7rem 0.9rem; margin-top: 0.6rem;
+  }
+  .brand-warning.is-visible { display: block; }
+  .brand-warning a { color: #DBA44C; text-decoration: underline; }
+  .addon-row {
+    border-top: 1px solid rgba(245,243,238,0.08); padding-top: 1.1rem; margin-top: 1.1rem;
+  }
+  .addon-row:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+  .qty-chip-list { display: grid; gap: 0.6rem; }
+  .qty-chip {
+    display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+    background: rgba(245,243,238,0.03); border: 1px solid rgba(245,243,238,0.08);
+    border-radius: 0.5rem; padding: 0.55rem 0.75rem;
+  }
+  .qty-chip input[type="number"] {
+    width: 4.5rem; background: rgba(245,243,238,0.05); border: 1px solid rgba(245,243,238,0.15);
+    border-radius: 0.4rem; padding: 0.35rem 0.5rem; color: var(--soft-white); font-size: 0.9rem; text-align: center;
+  }
+  .addon-qty {
+    width: 100%; background: rgba(245,243,238,0.05); border: 1px solid rgba(245,243,238,0.15);
+    border-radius: 0.5rem; padding: 0.85rem 1rem; color: var(--soft-white); font-size: 0.95rem;
+  }
+  details.addon-group summary { cursor: pointer; list-style: none; }
+  details.addon-group summary::-webkit-details-marker { display: none; }
+  .addon-toggle-icon { transition: transform 0.25s var(--ease-out); }
+  details[open] .addon-toggle-icon { transform: rotate(180deg); }
+
+  /* Summary sidebar */
+  .summary-card { position: sticky; top: 6.5rem; }
+  .line-item { display: flex; justify-content: space-between; gap: 0.75rem; font-size: 0.85rem; padding: 0.55rem 0; border-bottom: 1px solid rgba(245,243,238,0.06); }
+  .line-item:last-child { border-bottom: none; }
+  .line-item .li-name { color: var(--soft-white); }
+  .line-item .li-qty { color: rgba(245,243,238,0.6); white-space: nowrap; }
+  .li-flag { color: #E6A032; font-weight: 700; }
+  .empty-summary { font-size: 0.85rem; color: rgba(245,243,238,0.45); padding: 1rem 0; text-align: center; }
+</style>
+</head>
+<body class="font-body">
+
+<!-- HEADER -->
+<header id="site-header">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="assets/images/lg-logo-color.png" alt="LG Roofing Materials" class="h-12 w-auto">
+      </a>
+      <nav class="hidden md:flex items-center gap-9">
+        <a href="index.html#brands" class="nav-link">Our Brands</a>
+        <a href="index.html#why-us" class="nav-link">Why Us</a>
+        <a href="index.html#reviews" class="nav-link">Reviews</a>
+        <a href="index.html#location" class="nav-link">Location</a>
+        <a href="estimate.html" class="nav-link active">Estimate</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="hidden md:block">
+        <a href="tel:+18324300148" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call Now
+        </a>
+      </div>
+      <button id="menu-toggle" aria-label="Toggle menu" aria-expanded="false" class="md:hidden text-softwhite p-2 -mr-2">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="md:hidden overflow-hidden" style="max-height:0;">
+    <div class="px-6 pb-6 flex flex-col gap-4 border-t border-white/10 pt-4">
+      <a href="index.html#brands" class="nav-link">Our Brands</a>
+      <a href="index.html#why-us" class="nav-link">Why Us</a>
+      <a href="index.html#reviews" class="nav-link">Reviews</a>
+      <a href="index.html#location" class="nav-link">Location</a>
+      <a href="estimate.html" class="nav-link active">Estimate</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="tel:+18324300148" class="btn btn-primary mt-2 w-full">Call Now</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="bg-glow grain">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 pt-20 pb-12 text-center reveal">
+    <span class="text-xs font-bold uppercase tracking-[0.18em] text-goldbright">Build Your Materials List</span>
+    <h1 class="font-display text-5xl lg:text-6xl text-white mt-4">Get an Instant Estimate.</h1>
+    <p class="text-softwhite/70 mt-4 max-w-2xl mx-auto">Pick your brands, enter the quantities you need, and submit — our team confirms final pricing and availability by end of business day.</p>
+  </div>
+</section>
+
+<!-- ESTIMATE WIZARD -->
+<section class="mx-auto max-w-7xl px-6 lg:px-8 pb-28">
+  <div class="grid lg:grid-cols-5 gap-8 items-start">
+
+    <!-- Form column -->
+    <form id="estimate-form" class="lg:col-span-3 space-y-6">
+
+      <!-- Step 1: Shingle -->
+      <div class="step-card reveal">
+        <h2 class="font-display text-2xl text-white flex items-center gap-3"><span class="step-num">1</span> Choose Your Shingle</h2>
+        <div class="grid sm:grid-cols-2 gap-5 mt-6">
+          <div>
+            <label for="shingle-brand" class="field-label">Brand</label>
+            <select id="shingle-brand" class="field-input"></select>
+          </div>
+          <div>
+            <label for="shingle-product" class="field-label">Product</label>
+            <select id="shingle-product" class="field-input"></select>
+          </div>
+        </div>
+        <div class="mt-5 flex items-end gap-4 flex-wrap">
+          <div>
+            <label for="squares" class="field-label">Roof Size (in squares)</label>
+            <input id="squares" type="number" min="0" step="0.1" class="field-input max-w-xs" placeholder="e.g. 22">
+          </div>
+          <span id="squares-bundles" class="bundle-readout pb-3"></span>
+        </div>
+      </div>
+
+      <!-- Step 2: Hip & Ridge -->
+      <div class="step-card reveal">
+        <h2 class="font-display text-2xl text-white flex items-center gap-3"><span class="step-num">2</span> Hip &amp; Ridge Cap</h2>
+        <div class="grid sm:grid-cols-2 gap-5 mt-6">
+          <div>
+            <label for="hipridge-brand" class="field-label">Brand</label>
+            <select id="hipridge-brand" class="field-input"></select>
+          </div>
+          <div>
+            <label for="hipridge-product" class="field-label">Product</label>
+            <select id="hipridge-product" class="field-input"></select>
+          </div>
+        </div>
+        <div class="mt-5">
+          <label for="hipridge-qty" class="field-label">Bundles</label>
+          <input id="hipridge-qty" type="number" min="0" step="1" class="field-input max-w-xs" placeholder="e.g. 3">
+        </div>
+        <p id="hipridge-warning" class="brand-warning"></p>
+      </div>
+
+      <!-- Step 3: Starter -->
+      <div class="step-card reveal">
+        <h2 class="font-display text-2xl text-white flex items-center gap-3"><span class="step-num">3</span> Starter Strip</h2>
+        <div class="grid sm:grid-cols-2 gap-5 mt-6">
+          <div>
+            <label for="starter-brand" class="field-label">Brand</label>
+            <select id="starter-brand" class="field-input"></select>
+          </div>
+          <div>
+            <label for="starter-product" class="field-label">Product</label>
+            <select id="starter-product" class="field-input"></select>
+          </div>
+        </div>
+        <div class="mt-5">
+          <label for="starter-qty" class="field-label">Bundles</label>
+          <input id="starter-qty" type="number" min="0" step="1" class="field-input max-w-xs" placeholder="e.g. 2">
+        </div>
+        <p id="starter-warning" class="brand-warning"></p>
+      </div>
+
+      <!-- Step 4: Underlayment -->
+      <div class="step-card reveal">
+        <h2 class="font-display text-2xl text-white flex items-center gap-3"><span class="step-num">4</span> Underlayment</h2>
+        <div class="grid sm:grid-cols-2 gap-5 mt-6">
+          <div>
+            <label for="underlayment-brand" class="field-label">Brand</label>
+            <select id="underlayment-brand" class="field-input"></select>
+          </div>
+          <div>
+            <label for="underlayment-product" class="field-label">Product</label>
+            <select id="underlayment-product" class="field-input"></select>
+          </div>
+        </div>
+        <div class="mt-5">
+          <label for="underlayment-qty" class="field-label">Rolls</label>
+          <input id="underlayment-qty" type="number" min="0" step="1" class="field-input max-w-xs" placeholder="e.g. 4">
+        </div>
+      </div>
+
+      <!-- Step 5: Leak Barrier -->
+      <div class="step-card reveal">
+        <h2 class="font-display text-2xl text-white flex items-center gap-3"><span class="step-num">5</span> Leak Barrier / Ice &amp; Water</h2>
+        <div class="grid sm:grid-cols-2 gap-5 mt-6">
+          <div>
+            <label for="leakbarrier-brand" class="field-label">Brand</label>
+            <select id="leakbarrier-brand" class="field-input"></select>
+          </div>
+          <div>
+            <label for="leakbarrier-product" class="field-label">Product</label>
+            <select id="leakbarrier-product" class="field-input"></select>
+          </div>
+        </div>
+        <div class="mt-5">
+          <label for="leakbarrier-qty" class="field-label">Rolls</label>
+          <input id="leakbarrier-qty" type="number" min="0" step="1" class="field-input max-w-xs" placeholder="e.g. 3">
+        </div>
+      </div>
+
+      <!-- Step 6: Flat Roof Essentials -->
+      <div class="step-card reveal">
+        <h2 class="font-display text-2xl text-white flex items-center gap-3"><span class="step-num">6</span> Flat Roof Essentials</h2>
+        <p class="text-softwhite/60 text-sm mt-2">Enter a quantity for anything you need — leave anything else at 0.</p>
+        <div id="flatroof-list" class="qty-chip-list mt-6"></div>
+      </div>
+
+      <!-- Step 7: Add-ons -->
+      <div class="step-card reveal">
+        <h2 class="font-display text-2xl text-white flex items-center gap-3"><span class="step-num">7</span> Add-Ons</h2>
+        <p class="text-softwhite/60 text-sm mt-2">Enter a quantity for anything you need — leave anything else at 0.</p>
+
+        <div class="mt-6 space-y-0">
+          <div class="addon-row">
+            <span class="text-white font-semibold text-sm">Coil Nails</span>
+            <div class="grid sm:grid-cols-2 gap-4 mt-3">
+              <select id="coilnails-product" class="field-input"></select>
+              <input id="coilnails-qty" type="number" min="0" step="1" class="addon-qty" placeholder="Boxes">
+            </div>
+          </div>
+
+          <div class="addon-row">
+            <span class="text-white font-semibold text-sm" id="capnails-name">Cap Nails</span>
+            <div class="mt-3">
+              <input id="capnails-qty" type="number" min="0" step="1" class="addon-qty max-w-xs" placeholder="Boxes">
+            </div>
+          </div>
+
+          <div class="addon-row">
+            <span class="text-white font-semibold text-sm">Ridge Vent</span>
+            <div class="grid sm:grid-cols-3 gap-4 mt-3">
+              <select id="ridgevent-brand" class="field-input"></select>
+              <select id="ridgevent-product" class="field-input"></select>
+              <input id="ridgevent-qty" type="number" min="0" step="1" class="addon-qty" placeholder="Pieces">
+            </div>
+          </div>
+
+          <div class="addon-row">
+            <span class="text-white font-semibold text-sm">Drip Edge</span>
+            <div class="grid sm:grid-cols-2 gap-4 mt-3">
+              <select id="dripedge-product" class="field-input"></select>
+              <input id="dripedge-qty" type="number" min="0" step="1" class="addon-qty" placeholder="Pieces">
+            </div>
+          </div>
+
+          <div class="addon-row">
+            <span class="text-white font-semibold text-sm">Metal Valley Flashing</span>
+            <div class="grid sm:grid-cols-2 gap-4 mt-3">
+              <select id="valleymetal-product" class="field-input"></select>
+              <input id="valleymetal-qty" type="number" min="0" step="1" class="addon-qty" placeholder="Rolls">
+            </div>
+          </div>
+
+          <div class="addon-row">
+            <span class="text-white font-semibold text-sm">Decking Replacement</span>
+            <div class="grid sm:grid-cols-2 gap-4 mt-3">
+              <select id="decking-product" class="field-input"></select>
+              <input id="decking-qty" type="number" min="0" step="1" class="addon-qty" placeholder="Sheets">
+            </div>
+          </div>
+
+          <div class="addon-row">
+            <details class="addon-group">
+              <summary class="flex items-center justify-between">
+                <span class="text-white font-semibold text-sm">Vents &amp; Roof Jacks</span>
+                <svg class="addon-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div id="static-vent-list" class="qty-chip-list mt-4"></div>
+            </details>
+          </div>
+
+          <div class="addon-row">
+            <details class="addon-group">
+              <summary class="flex items-center justify-between">
+                <span class="text-white font-semibold text-sm">Flashing Accessories</span>
+                <svg class="addon-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div id="flashing-accessory-list" class="qty-chip-list mt-4"></div>
+            </details>
+          </div>
+
+          <div class="addon-row">
+            <details class="addon-group">
+              <summary class="flex items-center justify-between">
+                <span class="text-white font-semibold text-sm">Caulking &amp; Spray Paint</span>
+                <svg class="addon-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div id="addons-list" class="qty-chip-list mt-4"></div>
+            </details>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 7: Fulfillment -->
+      <div class="step-card reveal">
+        <h2 class="font-display text-2xl text-white flex items-center gap-3"><span class="step-num">8</span> Pickup or Delivery?</h2>
+        <div class="flex gap-4 mt-5">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="radio" name="fulfillment" value="pickup" checked class="h-4 w-4 accent-goldbright">
+            <span class="text-softwhite text-sm">Pickup — <a href="https://www.google.com/maps?cid=4473104450244157714" target="_blank" rel="noopener" class="underline hover:text-goldbright">200 Bluebell Road</a></span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="radio" name="fulfillment" value="delivery" class="h-4 w-4 accent-goldbright">
+            <span class="text-softwhite text-sm">Delivery</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Step 9: Contact -->
+      <div class="step-card reveal">
+        <h2 class="font-display text-2xl text-white flex items-center gap-3"><span class="step-num">9</span> Your Info</h2>
+        <p class="text-softwhite/60 text-sm mt-2">Fields marked * are required. We'll confirm this estimate by end of business day.</p>
+        <div class="grid sm:grid-cols-2 gap-5 mt-6">
+          <div>
+            <label for="est-name" class="field-label">Full Name *</label>
+            <input id="est-name" name="name" type="text" required class="field-input" placeholder="John Smith">
+          </div>
+          <div>
+            <label for="est-phone" class="field-label">Phone Number *</label>
+            <input id="est-phone" name="phone" type="tel" required class="field-input" placeholder="(832) 000-0000">
+          </div>
+        </div>
+        <div class="mt-5">
+          <label for="est-email" class="field-label">Email *</label>
+          <input id="est-email" name="email" type="email" required class="field-input" placeholder="you@email.com">
+        </div>
+        <div class="mt-5">
+          <label for="est-address" class="field-label">Project Address</label>
+          <input id="est-address" name="address" type="text" class="field-input" placeholder="Optional">
+        </div>
+        <div class="mt-5">
+          <label for="est-notes" class="field-label">Notes / Adjustments</label>
+          <textarea id="est-notes" name="notes" rows="3" class="field-input" placeholder="Anything we should know — quantity changes, timing, color preferences..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary w-full sm:w-auto mt-6">Submit Estimate Request</button>
+        <p id="form-status" class="mt-4 text-sm font-medium"></p>
+      </div>
+    </form>
+
+    <!-- Summary sidebar -->
+    <div class="lg:col-span-2">
+      <div class="summary-card surface-floating rounded-2xl p-7 reveal">
+        <h3 class="font-display text-xl text-white">Your Materials List</h3>
+        <p id="summary-flag-note" class="text-xs text-goldbright/90 mt-1" style="display:none;"><span class="li-flag">&#9888;</span> Some items are marked "verify" — our team double-checks these before confirming.</p>
+        <div id="summary-line-items" class="mt-4"><p class="empty-summary">Start with your shingle and squares to see your materials list.</p></div>
+        <div class="border-t border-white/10 mt-2 pt-4 space-y-1.5 text-sm">
+          <div class="flex justify-between text-softwhite/70"><span id="summary-fee-label">Pickup</span><span id="summary-fee">$0.00</span></div>
+          <div class="flex justify-between text-white font-bold text-lg mt-2"><span>Total</span><span id="summary-total">$0.00</span></div>
+        </div>
+        <p class="text-xs text-softwhite/45 mt-4 leading-relaxed">Prices already include TX sales tax. This is an <b class="text-softwhite/70">estimate</b>, not a final invoice — our team confirms exact pricing and stock by end of business day.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/8 bg-obsidian">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 py-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div>
+      <img src="assets/images/lg-logo-color.png" alt="LG Roofing Materials" class="h-14 w-auto">
+      <p class="text-softwhite/55 text-sm mt-4">Premium roofing materials for contractors and homeowners across Houston, TX. Pickup and delivery available.</p>
+    </div>
+    <div>
+      <h4 class="font-display text-lg text-white tracking-wide">QUICK LINKS</h4>
+      <ul class="mt-4 space-y-2.5 text-sm text-softwhite/60">
+        <li><a href="index.html#brands" class="hover:text-goldbright">Our Brands</a></li>
+        <li><a href="index.html#why-us" class="hover:text-goldbright">Why Us</a></li>
+        <li><a href="index.html#reviews" class="hover:text-goldbright">Reviews</a></li>
+        <li><a href="estimate.html" class="hover:text-goldbright">Get an Estimate</a></li>
+        <li><a href="contact.html" class="hover:text-goldbright">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-display text-lg text-white tracking-wide">OUR BRANDS</h4>
+      <ul class="mt-4 space-y-2.5 text-sm text-softwhite/60">
+        <li><a href="brands/atlas.html" class="hover:text-goldbright">Atlas</a></li>
+        <li><a href="brands/certainteed.html" class="hover:text-goldbright">CertainTeed</a></li>
+        <li><a href="brands/gaf.html" class="hover:text-goldbright">GAF</a></li>
+        <li><a href="brands/iko.html" class="hover:text-goldbright">IKO</a></li>
+        <li><a href="brands/owens-corning.html" class="hover:text-goldbright">Owens Corning</a></li>
+        <li><a href="brands/tamko.html" class="hover:text-goldbright">TAMKO</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-display text-lg text-white tracking-wide">CONTACT</h4>
+      <ul class="mt-4 space-y-2.5 text-sm text-softwhite/60">
+        <li><a href="https://www.google.com/maps?cid=4473104450244157714" target="_blank" rel="noopener" class="hover:text-goldbright">200 Bluebell Road</a><br>Houston, Texas 77037</li>
+        <li><a href="tel:+18324300148" class="hover:text-goldbright">(832) 430-0148</a></li>
+        <li><a href="mailto:sales@lgroofingmaterial.com" class="hover:text-goldbright">sales@lgroofingmaterial.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/8 py-6">
+    <p class="text-center text-xs text-softwhite/40">&copy; <span id="current-year"></span> LG Roofing Materials. All rights reserved. &middot; <a href="terms.html" class="hover:text-goldbright">Terms &amp; Trademark Disclaimer</a></p>
+  </div>
+</footer>
+
+<div id="mobile-call-bar" class="bg-charcoal border-t border-white/10 p-3">
+  <a href="tel:+18324300148" class="btn btn-primary w-full">Call Now</a>
+</div>
+<div class="md:hidden h-16"></div>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/estimate-engine.js"></script>
+<script src="assets/js/estimate-ui.js"></script>
+</body>
+</html>
