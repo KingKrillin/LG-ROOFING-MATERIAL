@@ -12,6 +12,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   const form = document.getElementById('estimate-form');
   if (!form) return;
 
+  // Bot mitigation: a form genuinely being filled out (shingle picks, squares,
+  // add-on quantities, contact fields) takes real humans well over this long.
+  // Bots that script-fill and submit immediately trip this.
+  const formRenderedAt = Date.now();
+  const MIN_HUMAN_MS = 3000;
+
   const res = await fetch('assets/data/products.json');
   const catalog = await res.json();
 
@@ -250,6 +256,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     e.preventDefault();
     const submitBtn = form.querySelector('button[type="submit"]');
     const status = $('form-status');
+
+    // Bot gate: honeypot field filled in, or submitted implausibly fast.
+    // Bots get the same success response real users see — no signal is
+    // given back that would teach a bot to adapt.
+    const gotcha = $('est-gotcha').value;
+    const elapsed = Date.now() - formRenderedAt;
+    if (gotcha || elapsed < MIN_HUMAN_MS) {
+      form.reset();
+      status.textContent = `Thanks — your estimate request has been sent. ${catalog.meta.confirmationSla}`;
+      status.className = 'mt-4 text-sm font-medium text-[#DBA44C]';
+      window.showToast(catalog.meta.confirmationSla, { title: 'Estimate Request Sent', type: 'success' });
+      return;
+    }
+
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
 
@@ -258,11 +278,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const payload = new FormData();
     payload.append('_subject', 'New Estimate Request — LG Roofing Materials');
+    payload.append('_gotcha', gotcha);
     payload.append('name', $('est-name').value);
     payload.append('phone', $('est-phone').value);
     payload.append('email', $('est-email').value);
     payload.append('address', $('est-address').value);
     payload.append('notes', $('est-notes').value);
+    payload.append('brand', input.shingle ? input.shingle.brand : '');
     payload.append('fulfillment', input.fulfillment);
     payload.append('estimate_total', money(result.total));
     payload.append('estimate_breakdown', buildStaffSummaryText(result, input));
@@ -274,6 +296,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
+        _gotcha: gotcha,
         name: $('est-name').value,
         phone: $('est-phone').value,
         email: $('est-email').value,
@@ -299,12 +322,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         form.reset();
         status.textContent = `Thanks — your estimate request has been sent. ${catalog.meta.confirmationSla}`;
         status.className = 'mt-4 text-sm font-medium text-[#DBA44C]';
+        window.showToast(catalog.meta.confirmationSla, { title: 'Estimate Request Sent', type: 'success' });
       } else {
         throw new Error('Form submission failed');
       }
     } catch (err) {
       status.textContent = 'Something went wrong sending your estimate. Please call us at (832) 430-0148 instead.';
       status.className = 'mt-4 text-sm font-medium text-red-400';
+      window.showToast('Please call us at (832) 430-0148 instead.', { title: 'Something Went Wrong', type: 'error', duration: 10000 });
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Submit Estimate Request';

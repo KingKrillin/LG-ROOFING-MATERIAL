@@ -1,6 +1,51 @@
 // LG Roofing Materials — shared site behavior
 
+// Toast notification — used by this file's contact-form handler and by
+// estimate-ui.js's estimate-form handler, for a confirmation that's actually
+// hard to miss (the old subtle inline text under the button wasn't cutting
+// it for customers submitting real orders).
+function showToast(message, { title = '', type = 'success', duration = 8000 } = {}) {
+  let container = document.querySelector('.toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.className = 'toast-container';
+    container.setAttribute('role', 'status');
+    container.setAttribute('aria-live', 'polite');
+    document.body.appendChild(container);
+  }
+
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  toast.innerHTML = `
+    <span class="toast-icon">${type === 'error' ? '!' : '&check;'}</span>
+    <div class="toast-body">
+      ${title ? `<p class="toast-title"></p>` : ''}
+      <p class="toast-message"></p>
+    </div>
+    <button type="button" class="toast-close" aria-label="Dismiss">&times;</button>
+  `;
+  if (title) toast.querySelector('.toast-title').textContent = title;
+  toast.querySelector('.toast-message').textContent = message;
+  container.appendChild(toast);
+
+  const remove = () => {
+    toast.classList.add('is-leaving');
+    toast.addEventListener('animationend', () => toast.remove(), { once: true });
+  };
+  const timer = setTimeout(remove, duration);
+  toast.querySelector('.toast-close').addEventListener('click', () => {
+    clearTimeout(timer);
+    remove();
+  });
+}
+window.showToast = showToast;
+
 document.addEventListener('DOMContentLoaded', () => {
+  // Bot mitigation for the contact form below: a real visitor takes well
+  // over this long to read the page and fill the form out.
+  const pageLoadedAt = Date.now();
+  const MIN_HUMAN_MS = 3000;
+
   // Header scroll shadow + hide-on-scroll-down / reveal-on-scroll-up (mobile)
   const header = document.getElementById('site-header');
   if (header) {
@@ -120,13 +165,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('current-year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Contact form -> Formspree (placeholder endpoint, see TODO in contact.html)
+  // Contact form -> Formspree
   const form = document.getElementById('contact-form');
   if (form) {
     const status = document.getElementById('form-status');
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const submitBtn = form.querySelector('button[type="submit"]');
+
+      // Bot gate: honeypot filled in, or submitted implausibly fast. Bots
+      // get the same success response real users see — no signal is given
+      // back that would teach a bot to adapt.
+      const gotcha = form.querySelector('[name="_gotcha"]').value;
+      const elapsed = Date.now() - pageLoadedAt;
+      if (gotcha || elapsed < MIN_HUMAN_MS) {
+        form.reset();
+        status.textContent = "Thanks — your message has been sent. We'll get back to you shortly.";
+        status.className = 'mt-4 text-sm font-medium text-[#DBA44C]';
+        showToast("We'll get back to you shortly.", { title: 'Message Sent', type: 'success' });
+        return;
+      }
+
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending...';
       try {
@@ -139,12 +198,14 @@ document.addEventListener('DOMContentLoaded', () => {
           form.reset();
           status.textContent = "Thanks — your message has been sent. We'll get back to you shortly.";
           status.className = 'mt-4 text-sm font-medium text-[#DBA44C]';
+          showToast("We'll get back to you shortly.", { title: 'Message Sent', type: 'success' });
         } else {
           throw new Error('Form submission failed');
         }
       } catch (err) {
         status.textContent = "Something went wrong sending your message. Please call us at (832) 430-0148 instead.";
         status.className = 'mt-4 text-sm font-medium text-red-400';
+        showToast('Please call us at (832) 430-0148 instead.', { title: 'Something Went Wrong', type: 'error', duration: 10000 });
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Send Message';
