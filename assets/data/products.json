@@ -1,8 +1,8 @@
 {
-  "_readme": "Prices from LG Roofing Material official price list, Feb 2026. All prices include TX sales tax already. Coverage figures sourced from manufacturer spec sheets where possible -- see 'confidence' field on each item. 'assumed' = no official spec exists for this exact use or box size; derived using standard industry convention, NOT yet confirmed against a physical bundle/box. 'confirm-sku' = confirmed number exists but two roll/box size variants are sold under this name, verify which one LG stocks. Treat 'assumed' and 'confirm-sku' items as provisional until checked.",
+  "_readme": "Prices from LG Roofing Material official price list, July 2026, with an added house markup: main roof shingles +$1/bundle (+$3/SQ), Hip & Ridge +$1/bundle, Starter +$5/bundle, Underlayment +$5/unit, Leak Barrier +$5/unit, Add Ons +$2/unit, Flashing Accessories/Drip Edge/Valley Flashing Metal +20%, Roofing Coil Nails +$5/box, over list price. All other categories are list price, no markup. All prices include TX sales tax already. Coverage figures sourced from manufacturer spec sheets where possible -- see 'confidence' field on each item. 'assumed' = no official spec exists for this exact use or box size; derived using standard industry convention, NOT yet confirmed against a physical bundle/box. 'confirm-sku' = confirmed number exists but two roll/box size variants are sold under this name, verify which one LG stocks. Treat 'assumed' and 'confirm-sku' items as provisional until checked.",
 
   "meta": {
-    "priceListDate": "2026-02",
+    "priceListDate": "2026-07",
     "taxIncluded": true,
     "bundlesPerSquare": 3,
     "deliveryFee": 100,
@@ -11,56 +11,56 @@
   },
 
   "shingles": [
-    { "brand": "GAF", "name": "Timberline HDZ South West", "unitPrice": 37.34, "sqPrice": 112.00 },
-    { "brand": "GAF", "name": "Timberline UHDZ", "unitPrice": 48.34, "sqPrice": 145.00 },
-    { "brand": "GAF", "name": "Timberline Natural Shadow SW", "unitPrice": 33.34, "sqPrice": 100.00 },
-    { "brand": "CertainTeed", "name": "Landmark AR", "unitPrice": 34.67, "sqPrice": 104.00 },
-    { "brand": "CertainTeed", "name": "Patriot", "unitPrice": 33.34, "sqPrice": 100.00 },
-    { "brand": "Tamko", "name": "Heritage Dallas", "unitPrice": 31.00, "sqPrice": 93.00 },
-    { "brand": "Tamko", "name": "Titan XT Premium Class 3 Rated Impact", "unitPrice": 36.00, "sqPrice": 108.00 },
-    { "brand": "IKO", "name": "Cambridge", "unitPrice": 30.00, "sqPrice": 90.00 },
-    { "brand": "IKO", "name": "Dynasty Class 3 Impact Resistant", "unitPrice": 35.00, "sqPrice": 105.00 },
-    { "brand": "Owens Corning", "name": "Oakridge", "unitPrice": 33.34, "sqPrice": 100.00 },
-    { "brand": "Owens Corning", "name": "Duration Class 3 Impact Resistant", "unitPrice": 38.34, "sqPrice": 115.00 },
-    { "brand": "Atlas", "name": "Pro Lam", "unitPrice": 30.00, "sqPrice": 90.00 },
-    { "brand": "Atlas", "name": "Pinnacle Pristine (Black Only)", "unitPrice": 30.00, "sqPrice": 90.00 }
+    { "brand": "GAF", "name": "Timberline HDZ South West", "unitPrice": 38.33, "sqPrice": 115.00 },
+    { "brand": "GAF", "name": "Timberline UHDZ", "unitPrice": 52.67, "sqPrice": 158.00 },
+    { "brand": "GAF", "name": "Timberline Natural Shadow SW", "unitPrice": 35.00, "sqPrice": 105.00 },
+    { "brand": "CertainTeed", "name": "Landmark AR", "unitPrice": 37.00, "sqPrice": 111.00 },
+    { "brand": "CertainTeed", "name": "Patriot", "unitPrice": 34.34, "sqPrice": 103.00 },
+    { "brand": "Tamko", "name": "Heritage Dallas", "unitPrice": 32.34, "sqPrice": 97.00 },
+    { "brand": "Tamko", "name": "Titan XT Premium Class 3 Rated Impact", "unitPrice": 39.33, "sqPrice": 118.00 },
+    { "brand": "IKO", "name": "Cambridge", "unitPrice": 32.00, "sqPrice": 96.00 },
+    { "brand": "IKO", "name": "Dynasty Class 3 Impact Resistant", "unitPrice": 37.00, "sqPrice": 111.00 },
+    { "brand": "Owens Corning", "name": "Oakridge", "unitPrice": 36.00, "sqPrice": 108.00 },
+    { "brand": "Owens Corning", "name": "Duration Class 3 Impact Resistant", "unitPrice": 39.67, "sqPrice": 119.00 },
+    { "brand": "Atlas", "name": "Pro Lam", "unitPrice": 31.00, "sqPrice": 93.00 },
+    { "brand": "Atlas", "name": "Pinnacle Pristine (Black Only)", "unitPrice": 32.34, "sqPrice": 97.00 }
   ],
 
   "starter": [
-    { "brand": "GAF", "name": "Pro-Start 120 lin. ft Starter Strip", "unitPrice": 45.00, "coverageLf": 120.33, "confidence": "confirmed", "note": "GAF sell sheet RESGN546" },
-    { "brand": "CertainTeed", "name": "Swift Starter", "unitPrice": 65.00, "coverageLf": 116, "confidence": "confirmed", "note": "CertainTeed brochure 20-20-1865, 18-pc bundle" },
-    { "brand": "IKO", "name": "Leading Edge Plus Starter", "unitPrice": 60.00, "coverageLf": 123, "confidence": "assumed", "note": "iko.com says 109 lf; distributor consensus says 123 lf. Using 123 -- CONFIRM against a physical bundle before trusting at scale." },
-    { "brand": "Owens Corning", "name": "Starter Strip Plus", "unitPrice": 45.00, "coverageLf": 105, "confidence": "confirmed", "note": "Owens Corning product spec" },
-    { "brand": "House Brand", "name": "Top Shield Starter Strip", "unitPrice": 45.00, "coverageLf": 120, "confidence": "assumed", "note": "No public spec for this house-brand SKU -- assumed to match generic 120lf starter convention. CONFIRM with your supplier." }
+    { "brand": "GAF", "name": "Pro-Start 120 lin. ft Starter Strip", "unitPrice": 61.00, "coverageLf": 120.33, "confidence": "confirmed", "note": "GAF sell sheet RESGN546" },
+    { "brand": "CertainTeed", "name": "Swift Starter", "unitPrice": 70.00, "coverageLf": 116, "confidence": "confirmed", "note": "CertainTeed brochure 20-20-1865, 18-pc bundle" },
+    { "brand": "IKO", "name": "Leading Edge Plus Starter", "unitPrice": 65.00, "coverageLf": 123, "confidence": "assumed", "note": "iko.com says 109 lf; distributor consensus says 123 lf. Using 123 -- CONFIRM against a physical bundle before trusting at scale." },
+    { "brand": "Owens Corning", "name": "Starter Strip Plus", "unitPrice": 60.00, "coverageLf": 105, "confidence": "confirmed", "note": "Owens Corning product spec" },
+    { "brand": "House Brand", "name": "Top Shield Starter Strip", "unitPrice": 58.00, "coverageLf": 120, "confidence": "assumed", "note": "No public spec for this house-brand SKU -- assumed to match generic 120lf starter convention. CONFIRM with your supplier." }
   ],
 
   "hipRidge": [
-    { "brand": "GAF", "name": "Royal Sovereign 3-Tab", "unitPrice": 32.00, "coverageLf": 32.5, "confidence": "assumed", "note": "GAF sells this only as a field 3-tab, not a spec'd hip/ridge product. Coverage derived assuming standard cut-into-thirds at 5in exposure. CONFIRM your shop's actual cut convention." },
-    { "brand": "GAF", "name": "Z Ridge Distinctive Ridge Cap Shingles", "unitPrice": 72.00, "coverageLf": 33.3, "confidence": "confirmed", "note": "GAF sell sheet RESHR111, 72 pcs/bundle" },
-    { "brand": "GAF", "name": "TimberTex Premium Ridge Cap Shingles", "unitPrice": 72.00, "coverageLf": 20, "confidence": "confirmed", "note": "GAF sell sheet RESHR102" },
-    { "brand": "CertainTeed", "name": "XT 25 3-Tab", "unitPrice": 33.00, "coverageLf": 33.3, "confidence": "assumed", "note": "CertainTeed's own data sheet just says 'use field shingles of like color' -- no official hip/ridge coverage published. Derived assuming standard cut-into-thirds at 5in exposure. CONFIRM your shop's actual cut convention." },
-    { "brand": "CertainTeed", "name": "Shadow Ridge Hip & Ridge", "unitPrice": 85.00, "coverageLf": 30, "confidence": "confirmed", "note": "CertainTeed brochure 20-20-1865, English 5in exposure (a Metric 45lf variant also exists -- confirm which you stock)" },
-    { "brand": "Tamko", "name": "Elite Glass-Seal 3-Tab Shingles", "unitPrice": 30.00, "coverageLf": 33.3, "confidence": "confirmed", "note": "Derived from Tamko's own application instructions (26 shingles -> 78 cut pieces)" },
-    { "brand": "Tamko", "name": "Hip and Ridge class-3", "unitPrice": 75.00, "coverageLf": 33.3, "confidence": "confirmed", "note": "Tamko Product Data Sheet -- 234 pieces per 100 lin ft" },
-    { "brand": "IKO", "name": "Marathon Plus AR", "unitPrice": 30.00, "coverageLf": 29.5, "confidence": "confirmed", "note": "Derived from IKO's own Marathon application instructions (21 shingles -> 63 cut pieces)" },
-    { "brand": "IKO", "name": "Hip & Ridge 12 Class 3", "unitPrice": 75.00, "coverageLf": 36.5, "confidence": "assumed", "note": "IKO's current (04/2026) tech data sheet says 29.53 lf, but that postdates LG's Feb 2026 price list -- distributor consensus (older spec) says 36.5 lf/78-pc. Using 36.5 as more likely match for current stock. CONFIRM against current inventory." },
-    { "brand": "Owens Corning", "name": "Supreme Shingles", "unitPrice": 33.00, "coverageLf": 32.5, "confidence": "confirmed", "note": "Derived from OC's own install instructions (Pub. 20475-O) for cutting into hip/ridge caps" },
-    { "brand": "Owens Corning", "name": "RIZERidge Hip & Ridge", "unitPrice": 85.00, "coverageLf": 33, "confidence": "confirmed", "note": "Owens Corning product spec, 22 shingles/bundle" },
-    { "brand": "Atlas", "name": "Pro Cut Hip and Ridge", "unitPrice": 71.00, "coverageLf": 31, "confidence": "confirmed", "note": "Atlas Product Data Sheet ATL-246984-00" }
+    { "brand": "GAF", "name": "Royal Sovereign 3-Tab", "unitPrice": 34.00, "coverageLf": 32.5, "confidence": "assumed", "note": "GAF sells this only as a field 3-tab, not a spec'd hip/ridge product. Coverage derived assuming standard cut-into-thirds at 5in exposure. CONFIRM your shop's actual cut convention." },
+    { "brand": "GAF", "name": "Z Ridge Distinctive Ridge Cap Shingles", "unitPrice": 76.00, "coverageLf": 33.3, "confidence": "confirmed", "note": "GAF sell sheet RESHR111, 72 pcs/bundle" },
+    { "brand": "GAF", "name": "TimberTex Premium Ridge Cap Shingles", "unitPrice": 79.00, "coverageLf": 20, "confidence": "confirmed", "note": "GAF sell sheet RESHR102" },
+    { "brand": "CertainTeed", "name": "XT 25 3-Tab", "unitPrice": 34.00, "coverageLf": 33.3, "confidence": "assumed", "note": "CertainTeed's own data sheet just says 'use field shingles of like color' -- no official hip/ridge coverage published. Derived assuming standard cut-into-thirds at 5in exposure. CONFIRM your shop's actual cut convention." },
+    { "brand": "CertainTeed", "name": "Shadow Ridge Hip & Ridge", "unitPrice": 97.00, "coverageLf": 30, "confidence": "confirmed", "note": "CertainTeed brochure 20-20-1865, English 5in exposure (a Metric 45lf variant also exists -- confirm which you stock)" },
+    { "brand": "Tamko", "name": "Elite Glass-Seal 3-Tab Shingles", "unitPrice": 33.00, "coverageLf": 33.3, "confidence": "confirmed", "note": "Derived from Tamko's own application instructions (26 shingles -> 78 cut pieces)" },
+    { "brand": "Tamko", "name": "Hip and Ridge class-3", "unitPrice": 81.00, "coverageLf": 33.3, "confidence": "confirmed", "note": "Tamko Product Data Sheet -- 234 pieces per 100 lin ft" },
+    { "brand": "IKO", "name": "Marathon Plus AR", "unitPrice": 33.00, "coverageLf": 29.5, "confidence": "confirmed", "note": "Derived from IKO's own Marathon application instructions (21 shingles -> 63 cut pieces)" },
+    { "brand": "IKO", "name": "Hip & Ridge 12 Class 3", "unitPrice": 81.00, "coverageLf": 36.5, "confidence": "assumed", "note": "IKO's current (04/2026) tech data sheet says 29.53 lf, but that postdates LG's Feb 2026 price list -- distributor consensus (older spec) says 36.5 lf/78-pc. Using 36.5 as more likely match for current stock. CONFIRM against current inventory." },
+    { "brand": "Owens Corning", "name": "Supreme Shingles", "unitPrice": 34.00, "coverageLf": 32.5, "confidence": "confirmed", "note": "Derived from OC's own install instructions (Pub. 20475-O) for cutting into hip/ridge caps" },
+    { "brand": "Owens Corning", "name": "RIZERidge Hip & Ridge", "unitPrice": 101.00, "coverageLf": 33, "confidence": "confirmed", "note": "Owens Corning product spec, 22 shingles/bundle" },
+    { "brand": "Atlas", "name": "Pro Cut Hip and Ridge", "unitPrice": 81.00, "coverageLf": 31, "confidence": "confirmed", "note": "Atlas Product Data Sheet ATL-246984-00" }
   ],
 
   "underlayment": [
-    { "brand": "GAF", "name": "Felt Buster Synthetic Roofing Felt", "unitPrice": 85.00, "coverageSqFt": 1000, "confidence": "confirmed", "note": "GAF data sheet RESUL183" },
-    { "brand": "GAF", "name": "Tiger Paw Synthetic Roofing Felt", "unitPrice": 140.00, "coverageSqFt": 1000, "confidence": "confirm-sku", "note": "GAF also sells a 400 sq ft roll under this name -- confirm which roll size matches LG's exact SKU/price" },
-    { "brand": "CertainTeed", "name": "Roof Runner Felt", "unitPrice": 90.00, "coverageSqFt": 937.5, "confidence": "confirmed", "note": "CertainTeed Technical Data Sheet, net coverage after overlap (1000 sq ft gross roll)" },
-    { "brand": "Owens Corning", "name": "Pro Armor Synthetic", "unitPrice": 95.00, "coverageSqFt": 929, "confidence": "confirmed", "note": "OC data sheet 10019655-L, usable coverage after 3in overlap" },
-    { "brand": "Owens Corning", "name": "Synthetic Underlayment-Rhino U20", "unitPrice": 68.00, "coverageSqFt": 1000, "confidence": "confirmed", "note": "RhinoRoof U20, now an Owens Corning brand" },
-    { "brand": "House Brand", "name": "Generic Synthetic", "unitPrice": 55.00, "coverageSqFt": 1000, "confidence": "assumed", "note": "No public spec for this house-brand SKU -- assumed to match standard 1000 sq ft synthetic roll. CONFIRM with your supplier." }
+    { "brand": "GAF", "name": "Felt Buster Synthetic Roofing Felt", "unitPrice": 100.00, "coverageSqFt": 1000, "confidence": "confirmed", "note": "GAF data sheet RESUL183" },
+    { "brand": "GAF", "name": "Tiger Paw Synthetic Roofing Felt", "unitPrice": 195.00, "coverageSqFt": 1000, "confidence": "confirm-sku", "note": "GAF also sells a 400 sq ft roll under this name -- confirm which roll size matches LG's exact SKU/price" },
+    { "brand": "CertainTeed", "name": "Roof Runner Felt", "unitPrice": 95.00, "coverageSqFt": 937.5, "confidence": "confirmed", "note": "CertainTeed Technical Data Sheet, net coverage after overlap (1000 sq ft gross roll)" },
+    { "brand": "Owens Corning", "name": "Pro Armor Synthetic", "unitPrice": 100.00, "coverageSqFt": 929, "confidence": "confirmed", "note": "OC data sheet 10019655-L, usable coverage after 3in overlap" },
+    { "brand": "Owens Corning", "name": "Synthetic Underlayment-Rhino U20", "unitPrice": 73.00, "coverageSqFt": 1000, "confidence": "confirmed", "note": "RhinoRoof U20, now an Owens Corning brand" },
+    { "brand": "House Brand", "name": "Generic Synthetic", "unitPrice": 60.00, "coverageSqFt": 1000, "confidence": "assumed", "note": "No public spec for this house-brand SKU -- assumed to match standard 1000 sq ft synthetic roll. CONFIRM with your supplier." }
   ],
 
   "leakBarrier": [
-    { "brand": "GAF", "name": "StormGuard Film-Surfaced Leak Barrier", "unitPrice": 105.00, "coverageSqFt": 200, "widthFt": 3, "confidence": "confirmed", "note": "GAF data sheet RESUL116, 3ft x 66.7ft roll" },
-    { "brand": "CertainTeed", "name": "Winter Guard", "unitPrice": 95.00, "coverageSqFt": 195, "widthFt": 3, "confidence": "confirmed", "note": "CertainTeed Technical Data Sheet, standard finish (3ft x 65ft roll)" },
+    { "brand": "GAF", "name": "StormGuard Film-Surfaced Leak Barrier", "unitPrice": 110.00, "coverageSqFt": 200, "widthFt": 3, "confidence": "confirmed", "note": "GAF data sheet RESUL116, 3ft x 66.7ft roll" },
+    { "brand": "CertainTeed", "name": "Winter Guard", "unitPrice": 117.00, "coverageSqFt": 195, "widthFt": 3, "confidence": "confirmed", "note": "CertainTeed Technical Data Sheet, standard finish (3ft x 65ft roll)" },
     { "brand": "House Brand", "name": "Ice and Water Shield", "unitPrice": 55.00 }
   ],
 
@@ -74,9 +74,9 @@
   ],
 
   "addOns": [
-    { "name": "Caulking", "unitPrice": 8.00 },
-    { "name": "Caulking NP1", "unitPrice": 8.00 },
-    { "name": "Spray Paint", "unitPrice": 8.00 }
+    { "name": "Caulking", "unitPrice": 10.00 },
+    { "name": "Caulking NP1", "unitPrice": 11.00 },
+    { "name": "Spray Paint", "unitPrice": 11.00 }
   ],
 
   "ventilationRidge": [
@@ -100,36 +100,36 @@
   ],
 
   "dripEdge": [
-    { "name": "Drip Edge 2 x 2 Colored", "unitPrice": 7.00 },
-    { "name": "Drip Edge 1.5 x 1.5 Colored", "unitPrice": 5.00 },
-    { "name": "Drip Edge Galvanized 1.5 x 1.5", "unitPrice": 3.00 },
-    { "name": "Drip Edge Galvanized 2 x 2", "unitPrice": 5.00 },
-    { "name": "Drip Edge 2 x 4 Colored", "unitPrice": 12.00 }
+    { "name": "Drip Edge 2 x 2 Colored", "unitPrice": 8.40 },
+    { "name": "Drip Edge 1.5 x 1.5 Colored", "unitPrice": 6.00 },
+    { "name": "Drip Edge Galvanized 1.5 x 1.5", "unitPrice": 3.60 },
+    { "name": "Drip Edge Galvanized 2 x 2", "unitPrice": 6.00 },
+    { "name": "Drip Edge 2 x 4 Colored", "unitPrice": 14.40 }
   ],
 
   "flashingAccessories": [
-    { "name": "L Flashing", "unitPrice": 12.00 },
-    { "name": "J Flashing", "unitPrice": 12.00 },
-    { "name": "Counter Flashing", "unitPrice": 13.00 },
-    { "name": "Gravel Guard", "unitPrice": 15.00 },
-    { "name": "Step Shingles", "unitPrice": 20.00 },
-    { "name": "Step Shingles Colored", "unitPrice": 30.00 }
+    { "name": "L Flashing", "unitPrice": 14.40 },
+    { "name": "J Flashing", "unitPrice": 14.40 },
+    { "name": "Counter Flashing", "unitPrice": 15.60 },
+    { "name": "Gravel Guard", "unitPrice": 18.00 },
+    { "name": "Step Shingles", "unitPrice": 30.00 },
+    { "name": "Step Shingles Colored", "unitPrice": 43.20 }
   ],
 
   "valleyFlashingMetal": [
-    { "name": "Galvanized Steel Roll Valley Flashing - 20\" x 50' ft", "unitPrice": 50.00, "coverageLf": 50 },
-    { "name": "Galvanized Steel Roll Valley Flashing - 24\" x 50' ft", "unitPrice": 65.00, "coverageLf": 50 }
+    { "name": "Galvanized Steel Roll Valley Flashing - 20\" x 50' ft", "unitPrice": 60.00, "coverageLf": 50 },
+    { "name": "Galvanized Steel Roll Valley Flashing - 24\" x 50' ft", "unitPrice": 78.00, "coverageLf": 50 }
   ],
 
   "decking": [
-    { "name": "OSB 7/16\"", "unitPrice": 15.00, "sheetSqFt": 32 },
+    { "name": "OSB 7/16\"", "unitPrice": 13.00, "sheetSqFt": 32 },
     { "name": "LP TechShield 7/16\"", "unitPrice": 19.00, "sheetSqFt": 32 },
     { "name": "Smooth Plywood 3/4\"", "unitPrice": 40.00, "sheetSqFt": 32 }
   ],
 
   "nails": [
-    { "name": "Roofing Coil Nails - 1 1/4in", "unitPrice": 40.00, "perBox": 7200, "confidence": "confirmed", "note": "Grip-Rite / industry-standard coil box size" },
-    { "name": "Roofing Coil Nails - 1 3/4in", "unitPrice": 60.00, "perBox": 7200, "confidence": "confirmed", "note": "Grip-Rite / industry-standard coil box size" },
+    { "name": "Roofing Coil Nails - 1 1/4in", "unitPrice": 50.00, "perBox": 7200, "confidence": "confirmed", "note": "Grip-Rite / industry-standard coil box size" },
+    { "name": "Roofing Coil Nails - 1 3/4in", "unitPrice": 65.00, "perBox": 7200, "confidence": "confirmed", "note": "Grip-Rite / industry-standard coil box size" },
     { "name": "Hand Nails - 1 1/4in", "unitPrice": 50.00, "perBox": 8000, "confidence": "assumed", "note": "Hand-drive nails are sold by weight (1/5/30/50 lb), not a fixed count. Assumed a 50lb box at ~160 nails/lb. CONFIRM which exact box this $50 price refers to." },
     { "name": "Cap Nails 1\"", "unitPrice": 15.00, "perBox": 3000, "confidence": "assumed", "note": "Grip-Rite sells both a 2,000ct and 3,000ct box under this description. Assumed 3,000ct. CONFIRM which SKU LG stocks." }
   ]
