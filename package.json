@@ -2,8 +2,12 @@
   "name": "lg-roofing-materials",
   "version": "1.0.0",
   "private": true,
-  "description": "LG Roofing Materials website. Static site, plus one Vercel serverless function for the estimate shadow-copy email.",
+  "description": "LG Roofing Materials website. Static site, plus one Vercel serverless function for the estimate shadow-copy email. Tailwind CSS is prebuilt into assets/css/tailwind.css: run npm run build:css after changing classes.",
   "dependencies": {
     "resend": "^6.17.2"
+  },
+  "scripts": {
+    "build:css": "npx -y tailwindcss@3.4.17 -i tailwind.input.css -o assets/css/tailwind.css",
+    "watch:css": "npx -y tailwindcss@3.4.17 -i tailwind.input.css -o assets/css/tailwind.css --watch"
   }
 }

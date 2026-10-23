@@ -26,7 +26,7 @@
 
 ## Output Defaults
 - Single `index.html` file, all styles inline, unless user says otherwise
-- Tailwind CSS via CDN: `<script src="https://cdn.tailwindcss.com"></script>`
+- Tailwind CSS is prebuilt, not loaded from the CDN. Pages link `assets/css/tailwind.css` (`../assets/css/tailwind.css` in brands/) as the last line before `</head>`. Colors and fonts live in `tailwind.config.js`. After adding or changing classes in any page or in assets/js/, run `npm run build:css` and commit the rebuilt `assets/css/tailwind.css`. A new folder of pages must be added to `content` in `tailwind.config.js`.
 - Placeholder images: `https://placehold.co/WIDTHxHEIGHT`
 - Mobile-first responsive
 
