@@ -11,24 +11,6 @@ window.SHINGLE_LINES = {
       "stock": "Timberline Natural Shadow SW",
       "colors": [
         {
-          "name": "Hickory",
-          "slug": "hickory",
-          "desc": "A warm medium brown blend with tan and rust flecks.",
-          "house": true
-        },
-        {
-          "name": "Pewter Gray",
-          "slug": "pewter-gray",
-          "desc": "A cool medium gray blend with charcoal shadow lines.",
-          "house": true
-        },
-        {
-          "name": "Barkwood",
-          "slug": "barkwood",
-          "desc": "A warm brown-gray blend with a driftwood-like look.",
-          "house": true
-        },
-        {
           "name": "Charcoal",
           "slug": "charcoal",
           "desc": "A dark blue-gray blend that reads almost black on the roof.",
@@ -38,18 +20,6 @@ window.SHINGLE_LINES = {
           "name": "Weathered Wood",
           "slug": "weathered-wood",
           "desc": "A soft tan-gray blend with a weathered driftwood look.",
-          "house": true
-        },
-        {
-          "name": "Shakewood",
-          "slug": "shakewood",
-          "desc": "A golden-brown, amber blend with a cedar-shake look.",
-          "house": true
-        },
-        {
-          "name": "Slate",
-          "slug": "slate",
-          "desc": "A cool, dark gray-blue blend.",
           "house": true
         }
       ]
@@ -114,76 +84,6 @@ window.SHINGLE_LINES = {
           "name": "Slate",
           "slug": "slate",
           "desc": "A cool, dark gray-blue blend.",
-          "house": true
-        },
-        {
-          "name": "Birchwood",
-          "slug": "birchwood",
-          "desc": "Regional High Definition color — call to confirm Houston availability.",
-          "group": "Regional",
-          "house": true
-        },
-        {
-          "name": "Biscayne Blue",
-          "slug": "biscayne-blue",
-          "desc": "Regional High Definition color — call to confirm Houston availability.",
-          "group": "Regional",
-          "house": true
-        },
-        {
-          "name": "Copper Canyon",
-          "slug": "copper-canyon",
-          "desc": "Regional High Definition color — call to confirm Houston availability.",
-          "group": "Regional",
-          "house": true
-        },
-        {
-          "name": "Driftwood",
-          "slug": "driftwood",
-          "desc": "Regional High Definition color — call to confirm Houston availability.",
-          "group": "Regional",
-          "house": true
-        },
-        {
-          "name": "Fox Hollow Gray",
-          "slug": "fox-hollow-gray",
-          "desc": "Regional High Definition color — call to confirm Houston availability.",
-          "group": "Regional",
-          "house": true
-        },
-        {
-          "name": "Golden Amber",
-          "slug": "golden-amber",
-          "desc": "Regional High Definition color — call to confirm Houston availability.",
-          "group": "Regional",
-          "house": true
-        },
-        {
-          "name": "Oyster Gray",
-          "slug": "oyster-gray",
-          "desc": "Regional High Definition color — call to confirm Houston availability.",
-          "group": "Regional",
-          "house": true
-        },
-        {
-          "name": "Patriot Red",
-          "slug": "patriot-red",
-          "desc": "Regional High Definition color — call to confirm Houston availability.",
-          "group": "Regional",
-          "house": true
-        },
-        {
-          "name": "Sunset Brick",
-          "slug": "sunset-brick",
-          "desc": "Regional High Definition color — call to confirm Houston availability.",
-          "group": "Regional",
-          "house": true
-        },
-        {
-          "name": "Williamsburg Slate",
-          "slug": "williamsburg-slate",
-          "desc": "Regional High Definition color — call to confirm Houston availability.",
-          "group": "Regional",
           "house": true
         },
         {
@@ -481,57 +381,6 @@ window.SHINGLE_LINES = {
           "name": "Teak",
           "slug": "teak",
           "desc": "Medium neutral brown shingle with a blended mix of gray, medium and dark brown and golden tan granules",
-          "house": true
-        }
-      ]
-    },
-    {
-      "id": "trudefinition-oakridge",
-      "name": "TruDefinition® Oakridge®",
-      "tier": "Value · TruDefinition",
-      "url": "https://www.owenscorning.com/en-us/roofing/shingles/trudefinition-oakridge",
-      "stocked": false,
-      "colors": [
-        {
-          "name": "Brownwood",
-          "slug": "brownwood",
-          "desc": "Dark warm brown shingles with prominent black, brown and orange granules",
-          "house": true
-        },
-        {
-          "name": "Desert Tan",
-          "slug": "desert-tan",
-          "desc": "Medium warm golden brown shingle with prominent buff, golden tan and dark brown granules",
-          "house": true
-        },
-        {
-          "name": "Driftwood",
-          "slug": "driftwood",
-          "desc": "Medium neutral brown shingles with a prominent mix of dark and medium brown, sage green, and golden tan granules",
-          "house": true
-        },
-        {
-          "name": "Estate Gray",
-          "slug": "estate-gray",
-          "desc": "Medium warm gray shingles with a green undertone achieved by mixing prominent black, and dark, medium and greenish gray granules",
-          "house": true
-        },
-        {
-          "name": "Onyx Black",
-          "slug": "onyx-black",
-          "desc": "Black shingle with prominent dark gray and black granules",
-          "house": true
-        },
-        {
-          "name": "Teak",
-          "slug": "teak",
-          "desc": "Medium neutral brown shingle with a prominent mix of gray, medium and dark brown and golden tan granules",
-          "house": true
-        },
-        {
-          "name": "Williamsburg Gray",
-          "slug": "williamsburg-gray",
-          "desc": "Dark neutral gray with prominent brown, dark gray, and black granules",
           "house": true
         }
       ]
@@ -921,12 +770,6 @@ window.SHINGLE_LINES = {
       "stock": "Heritage Dallas",
       "colors": [
         {
-          "name": "Antique Slate",
-          "slug": "antique-slate",
-          "desc": "Antique Slate’s deep black base, softened by hints of aged white highlights, delivers a time-honored, elegant look. As you can see, this refined combination pairs beautifully with classic brick, stone, and neutral siding, creating a sophisticated, enduring appeal.",
-          "house": true
-        },
-        {
           "name": "Oxford Grey",
           "slug": "oxford-grey",
           "desc": "Oxford Grey reflects the sophistication of its namesake, blending rich gothic grey tones with soft tan undertones for a refined yet inviting look. As represented below, this color enhances classic, contemporary, and transitional home styles.",
@@ -951,27 +794,9 @@ window.SHINGLE_LINES = {
           "house": true
         },
         {
-          "name": "Rustic Redwood",
-          "slug": "rustic-redwood",
-          "desc": "Rustic Redwood blends rich reds, deep browns, and rust-orange hues to reflect the warmth and grandeur of towering redwood forests. See how it effortlessly pairs with warm-toned siding and natural stone elements.",
-          "house": true
-        },
-        {
           "name": "Rustic Slate",
           "slug": "rustic-slate",
           "desc": "With its refined mix of deep browns, black, and muted copper highlights, Rustic Slate provides a sophisticated and high-end aesthetic. See how it complements stone exteriors and adds contrast to neutral siding.",
-          "house": true
-        },
-        {
-          "name": "Shadow Grey",
-          "slug": "shadow-grey",
-          "desc": "Shadow Grey explores the depth between black and white, blending dark charcoal and soft grey tones. As seen below, this versatile shade enhances modern and traditional homes alike, offering a refined contrast to lighter exteriors.",
-          "house": true
-        },
-        {
-          "name": "Virginia Slate",
-          "slug": "virginia-slate",
-          "desc": "Virginia Slate features a strong jet-black base, accented with subtle lighter tones to add dimension. Inspired by the natural slate mines of Virginia, this bold color is proven to enhance premium, high-contrast exteriors.",
           "house": true
         },
         {
@@ -1321,75 +1146,6 @@ window.SHINGLE_LINES = {
         {
           "name": "Sunset",
           "slug": "sunset",
-          "desc": "",
-          "house": true
-        }
-      ]
-    },
-    {
-      "id": "stormmaster-shake",
-      "name": "StormMaster® Shake",
-      "tier": "Premium · Class 4",
-      "url": "https://www.atlasroofing.com/products/roof-shingles/stormmaster-shake-shingles",
-      "stocked": false,
-      "colors": [
-        {
-          "name": "Moonlight Beach",
-          "slug": "moonlight-beach",
-          "desc": "",
-          "house": true
-        },
-        {
-          "name": "Midnight Lake",
-          "slug": "midnight-lake",
-          "desc": "",
-          "house": true
-        },
-        {
-          "name": "Grand Teton",
-          "slug": "grand-teton",
-          "desc": "",
-          "house": true
-        },
-        {
-          "name": "Aspen Grove",
-          "slug": "aspen-grove",
-          "desc": "",
-          "house": true
-        },
-        {
-          "name": "Black Shadow",
-          "slug": "black-shadow",
-          "desc": "",
-          "house": true
-        },
-        {
-          "name": "Pewter",
-          "slug": "pewter",
-          "desc": "",
-          "house": true
-        },
-        {
-          "name": "Chestnut",
-          "slug": "chestnut",
-          "desc": "",
-          "house": true
-        },
-        {
-          "name": "Weathered Wood",
-          "slug": "weathered-wood",
-          "desc": "",
-          "house": true
-        },
-        {
-          "name": "Copper Canyon",
-          "slug": "copper-canyon",
-          "desc": "",
-          "house": true
-        },
-        {
-          "name": "Morning Harvest",
-          "slug": "morning-harvest",
           "desc": "",
           "house": true
         }
