@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ATLAS ProLam&reg; Shingles | LG Roofing Materials — Houston, TX</title>
-<meta name="description" content="Explore Atlas Roofing&reg; ProLam&reg; laminated shingles. Compare available colors, see technical specs, learn about the brand, and get shingles delivered in Houston, TX from LG Roofing Materials.">
+<title>Atlas Shingles &mdash; ProLam, Pinnacle Pristine &amp; StormMaster Shake Colors | LG Roofing Materials</title>
+<meta name="description" content="Browse every Atlas ProLam&reg;, Pinnacle&reg; Pristine and StormMaster&reg; Shake color made at Atlas' Daingerfield, TX plant, with close-ups and roof views. From LG Roofing Materials in Houston.">
 <link rel="icon" type="image/png" href="../assets/images/lg-logo-color.png">
 <link rel="stylesheet" href="../assets/css/styles.css">
 <style>
@@ -313,14 +313,14 @@
     <nav class="text-xs text-white/60" aria-label="Breadcrumb">
       <a href="../index.html#brands" class="hover:text-white">All Brand Partners</a>
       <span class="mx-1.5">/</span>
-      <span class="text-white font-medium">Atlas ProLam&reg; Shingles</span>
+      <span class="text-white font-medium">Atlas Shingles</span>
     </nav>
 
     <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-goldbright bg-goldbright/10 border border-goldbright/30 rounded-full px-4 py-1.5 mt-5">
       Manufactured by Atlas
     </span>
-    <h1 class="font-display text-5xl lg:text-6xl text-white mt-5 tracking-tight">PROLAM<span class="align-top text-2xl">&reg;</span></h1>
-    <p class="text-white/75 text-base lg:text-lg mt-3 max-w-xl">A laminated dimensional shingle that pairs a polished, designer look with exceptional value &mdash; built-in algae resistance and a Lifetime Limited Warranty.</p>
+    <h1 class="font-display text-5xl lg:text-6xl text-white mt-5 tracking-tight">PROLAM<span class="align-top text-3xl">&reg;</span> &amp; PINNACLE<span class="align-top text-3xl">&reg;</span></h1>
+    <p class="text-white/75 text-base lg:text-lg mt-3 max-w-xl">ProLam&reg;, Scotchgard&trade;-protected Pinnacle&reg; Pristine, and Class 4 StormMaster&reg; Shake &mdash; the colors Atlas makes at its Daingerfield, Texas plant.</p>
     <div class="mt-8 flex flex-wrap gap-4">
       <a href="https://www.atlasroofing.com/products/roof-shingles/prolam-shingles" target="_blank" rel="noopener" class="btn btn-primary">
         View Official ProLam Page
@@ -347,8 +347,8 @@
       <div class="oc-stat__label">Impact Resistance Rating</div>
     </div>
     <div class="oc-stat">
-      <div class="oc-stat__num">7</div>
-      <div class="oc-stat__label">Available Colors</div>
+      <div class="oc-stat__num">22</div>
+      <div class="oc-stat__label">Colors to Choose From</div>
     </div>
   </div>
 </section>
@@ -394,19 +394,25 @@
       <!-- Copy + Swatch Picker -->
       <div>
         <span class="text-xs font-bold uppercase tracking-[0.18em] text-gold">Color &amp; Imagery</span>
-        <h2 class="font-display text-3xl lg:text-4xl text-ocink tracking-tight mt-2">A DESIGNER LOOK AT AN EVERYDAY PRICE</h2>
-        <p class="text-ocgray text-[15px] leading-relaxed mt-5">ProLam&reg; gives homeowners a clean, dimensional shadow line without the premium price tag. Built-in algae resistance and Class 3 impact protection mean the value runs deeper than just the color palette &mdash; this is a shingle engineered to hold up while still looking sharp.</p>
+        <h2 class="font-display text-3xl lg:text-4xl text-ocink tracking-tight mt-2">PICK YOUR ATLAS LINE, THEN YOUR COLOR</h2>
+        <p class="text-ocgray text-[15px] leading-relaxed mt-5">Choose a line below, then tap any swatch to see a full-size close-up and how the color reads on a pitched roof. Colors shown are the ones Atlas produces at its Daingerfield, TX plant, which supplies the Houston area.</p>
 
-        <div class="grid grid-cols-3 sm:grid-cols-6 gap-3 mt-8" id="swatch-grid" role="list" aria-label="ProLam shingle colors"></div>
+        <div class="sp-lines mt-8" id="sp-lines" role="tablist" aria-label="Atlas shingle lines"></div>
+        <div class="sp-line-meta" id="sp-line-meta"></div>
 
-        <div class="mt-6">
+        <div class="sp-swatch-grid" id="swatch-grid" role="list"></div>
+
+        <div class="mt-7">
           <p class="text-xs font-semibold uppercase tracking-wide text-ocgray">Color Selected</p>
-          <p class="font-display text-2xl text-ocink mt-1" id="color-name">Black Shadow</p>
-          <p class="text-ocgray text-sm mt-1" id="color-desc">Near-black charcoal with a deep, neutral tone.</p>
-          <a href="https://www.atlasroofing.com/products/roof-shingles/prolam-shingles" target="_blank" rel="noopener" class="btn-oc-link mt-3">
-            View ProLam Colors on AtlasRoofing.com
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
-          </a>
+          <p class="font-display text-2xl text-ocink mt-1"><span id="color-name"></span> <span id="color-group" class="sp-badge sp-badge--accent align-middle" hidden></span></p>
+          <p class="text-ocgray text-sm mt-1" id="color-desc"></p>
+          <div class="flex flex-wrap items-center gap-x-6 gap-y-3 mt-4">
+            <a id="sp-choose" href="../estimate.html" class="btn-oc-primary text-sm">Choose This Color</a>
+            <a id="sp-mfr-link" href="https://www.atlasroofing.com" target="_blank" rel="noopener" class="btn-oc-link">
+              View this line on AtlasRoofing.com
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+            </a>
+          </div>
         </div>
 
         <div class="oc-callout p-5 mt-7">
@@ -415,15 +421,24 @@
       </div>
 
       <!-- Imagery -->
-      <div>
-        <div class="oc-shingle-preview" id="shingle-preview-trigger" role="button" tabindex="0" aria-label="Click to view full-size shingle texture">
-          <img class="oc-shingle-preview__img" id="shingle-preview-img" src="" alt="ProLam shingle close-up texture">
-          <button class="oc-zoom-btn" aria-label="View full-size shingle texture" type="button" id="zoom-btn">
+      <div class="sp-preview-col">
+        <div class="oc-shingle-preview" id="shingle-preview-trigger" role="button" tabindex="0" aria-label="View full-size shingle close-up">
+          <img class="oc-shingle-preview__img" id="shingle-preview-img" src="" alt="">
+          <span class="sp-frame-label">Close-Up</span>
+          <button class="oc-zoom-btn" aria-label="View full-size shingle close-up" type="button" id="zoom-btn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
           </button>
           <span class="oc-zoom-label">Click to Zoom</span>
         </div>
-        <a href="https://www.atlasroofing.com/products/roof-shingles/prolam-shingles" target="_blank" rel="noopener" class="w-full btn-oc-secondary mt-4 text-sm">
+        <div class="oc-shingle-preview mt-4" id="house-preview-trigger" role="button" tabindex="0" aria-label="View full-size photo on a roof">
+          <img class="oc-shingle-preview__img" id="house-preview-img" src="" alt="" loading="lazy" decoding="async">
+          <div class="sp-house-empty" id="house-preview-empty" hidden>Atlas doesn't publish a home photo for this color yet &mdash; ask us for a physical sample.</div>
+          <span class="sp-frame-label">On a Roof</span>
+          <button class="oc-zoom-btn" aria-label="View full-size photo on a roof" type="button" id="house-zoom-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </button>
+        </div>
+        <a href="https://www.atlasroofing.com" target="_blank" rel="noopener" id="sp-more-photos" class="w-full btn-oc-secondary mt-4 text-sm">
           See More Photos on AtlasRoofing.com
         </a>
       </div>
@@ -463,8 +478,8 @@
 <section id="contractor" class="oc-section border-t border-ocline">
   <div class="mx-auto max-w-7xl px-6 lg:px-8 py-16">
     <span class="text-xs font-bold uppercase tracking-[0.18em] text-gold">Buy Your Shingles Today</span>
-    <h2 class="font-display text-3xl lg:text-4xl text-ocink mt-2">GET YOUR PROLAM ROOF IN HOUSTON, TX</h2>
-    <p class="text-ocgray text-[15px] mt-4 max-w-2xl">LG Roofing Materials stocks Atlas&reg; ProLam&reg; shingles for pickup and delivery across the Houston area. Call us directly for current pricing, color availability, and contractor referrals.</p>
+    <h2 class="font-display text-3xl lg:text-4xl text-ocink mt-2">GET YOUR ATLAS ROOF IN HOUSTON, TX</h2>
+    <p class="text-ocgray text-[15px] mt-4 max-w-2xl">LG Roofing Materials supplies Atlas&reg; shingles for pickup and delivery across the Houston area. Found a color you like? Call us for current pricing, stock on hand, and special orders.</p>
 
     <div class="oc-card p-7 mt-8 max-w-xl flex flex-col sm:flex-row sm:items-center gap-6">
       <div class="flex-1">
@@ -497,7 +512,7 @@
 <!-- CTA -->
 <section class="bg-glow">
   <div class="mx-auto max-w-4xl px-6 lg:px-8 py-24 text-center reveal">
-    <h2 class="font-display text-4xl lg:text-5xl text-white">Ready For ProLam Shingles?</h2>
+    <h2 class="font-display text-4xl lg:text-5xl text-white">Ready For Atlas Shingles?</h2>
     <p class="text-softwhite/70 mt-4 max-w-xl mx-auto">Available for pickup or delivery in Houston, TX. Call now or send us your project details.</p>
     <div class="mt-9 flex flex-wrap justify-center gap-4">
       <a href="tel:+18324080872" class="btn btn-primary text-base px-8 py-4">Call Now</a>
@@ -561,88 +576,13 @@
   <figure>
     <img id="lightbox-img" src="" alt="">
     <figcaption id="lightbox-caption">
-      <span id="lightbox-sub">Atlas ProLam&reg;</span>
+      <span id="lightbox-sub">Atlas</span>
     </figcaption>
   </figure>
 </div>
 
 <script src="../assets/js/main.js"></script>
-<script>
-  // ProLam color swatch picker — each color uses real Atlas product photography
-  const SHINGLE_BASE = '../assets/images/shingles/prolam/';
-  const PROLAM_COLORS = [
-    { name: 'Black Shadow',     slug: 'black-shadow',     desc: 'Near-black charcoal with a deep, neutral tone.' },
-    { name: 'Hearthstone',      slug: 'hearthstone',      desc: 'Dark warm gray with a subtle brown undertone.' },
-    { name: 'Pewter',           slug: 'pewter',           desc: 'A cool, medium blue-gray blend.' },
-    { name: 'Hickory',          slug: 'hickory',          desc: 'A warm, reddish-brown blend.' },
-    { name: 'Weathered Wood',   slug: 'weathered-wood',   desc: 'A lighter taupe-brown blend with a driftwood look.' },
-    { name: 'Weathered Shadow', slug: 'weathered-shadow', desc: 'A medium warm gray-brown blend.' },
-    { name: 'Desert Shake',     slug: 'desert-shake',     desc: 'A tan, sandy brown shade — the lightest of the collection.' },
-  ];
-  const DEFAULT_COLOR = 'Black Shadow';
-  let currentColor = null;
-
-  function selectColor(name) {
-    const color = PROLAM_COLORS.find(c => c.name === name) || PROLAM_COLORS[0];
-    currentColor = color;
-    document.getElementById('color-name').textContent = color.name;
-    document.getElementById('color-desc').textContent = color.desc;
-
-    const previewImg = document.getElementById('shingle-preview-img');
-    previewImg.classList.add('is-loading');
-    previewImg.src = `${SHINGLE_BASE}${color.slug}-texture.jpg`;
-    previewImg.alt = `Atlas ProLam ${color.name} shingle close-up texture`;
-    previewImg.onload = () => previewImg.classList.remove('is-loading');
-
-    document.querySelectorAll('.oc-swatch').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.name === color.name);
-      btn.setAttribute('aria-pressed', String(btn.dataset.name === color.name));
-    });
-  }
-
-  function openLightbox() {
-    if (!currentColor) return;
-    const lightboxImg = document.getElementById('lightbox-img');
-    lightboxImg.src = `${SHINGLE_BASE}${currentColor.slug}-texture.jpg`;
-    lightboxImg.alt = `Atlas ProLam ${currentColor.name} shingle close-up`;
-    document.getElementById('lightbox-sub').innerHTML = `${currentColor.name} &middot; Atlas ProLam&reg;`;
-    document.getElementById('oc-lightbox').classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightbox() {
-    document.getElementById('oc-lightbox').classList.remove('is-open');
-    document.body.style.overflow = '';
-  }
-
-  const grid = document.getElementById('swatch-grid');
-  PROLAM_COLORS.forEach(color => {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'oc-swatch';
-    btn.dataset.name = color.name;
-    btn.setAttribute('role', 'listitem');
-    btn.setAttribute('aria-label', color.name);
-    btn.setAttribute('aria-pressed', 'false');
-    btn.innerHTML = `<img src="${SHINGLE_BASE}${color.slug}-thumb.jpg" alt="${color.name} shingle swatch" loading="lazy">`;
-    btn.addEventListener('click', () => selectColor(color.name));
-    grid.appendChild(btn);
-  });
-
-  selectColor(DEFAULT_COLOR);
-
-  document.getElementById('shingle-preview-trigger').addEventListener('click', openLightbox);
-  document.getElementById('shingle-preview-trigger').addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(); }
-  });
-  document.getElementById('zoom-btn').addEventListener('click', (e) => { e.stopPropagation(); openLightbox(); });
-  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
-  document.getElementById('oc-lightbox').addEventListener('click', (e) => {
-    if (e.target.id === 'oc-lightbox') closeLightbox();
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeLightbox();
-  });
-</script>
+<script src="../assets/js/shingle-lines.js"></script>
+<script src="../assets/js/shingle-picker.js" data-brand="Atlas" data-site="AtlasRoofing.com" data-default-line="prolam" data-house-label="On a Roof"></script>
 </body>
 </html>

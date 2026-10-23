@@ -57,6 +57,22 @@ document.addEventListener('DOMContentLoaded', async () => {
   shingleBrandSelect.addEventListener('change', () => { populateShingleProducts(); onShingleChanged(); recalc(); });
   populateShingleProducts();
 
+  // Arriving from a brand page's "Choose This Color" button:
+  // ?brand=GAF&line=Timberline HDZ&color=Charcoal[&product=<price list name>]
+  const picked = new URLSearchParams(location.search);
+  if (picked.get('brand')) {
+    const brand = shingleBrands.find((b) => b.toLowerCase() === picked.get('brand').toLowerCase());
+    if (brand) {
+      shingleBrandSelect.value = brand;
+      populateShingleProducts();
+      const product = catalog.shingles.find((s) => s.brand === brand && s.name === picked.get('product'));
+      if (product) $('shingle-product').value = catalog.shingles.indexOf(product);
+    }
+    if (picked.get('color')) {
+      $('est-notes').value = `Color choice: ${picked.get('brand')} ${picked.get('line') || ''} – ${picked.get('color')}`.replace(/\s+–/, ' –');
+    }
+  }
+
   function updateBundleReadout() {
     const squares = Number($('squares').value) || 0;
     const bundles = squares > 0 ? Math.ceil(squares * catalog.meta.bundlesPerSquare) : 0;
