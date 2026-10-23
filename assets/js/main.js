@@ -203,9 +203,9 @@ document.addEventListener('DOMContentLoaded', () => {
           throw new Error('Form submission failed');
         }
       } catch (err) {
-        status.textContent = "Something went wrong sending your message. Please call us at (832) 430-0148 instead.";
+        status.textContent = "Something went wrong sending your message. Please call us at (832) 408-0872 instead.";
         status.className = 'mt-4 text-sm font-medium text-red-400';
-        showToast('Please call us at (832) 430-0148 instead.', { title: 'Something Went Wrong', type: 'error', duration: 10000 });
+        showToast('Please call us at (832) 408-0872 instead.', { title: 'Something Went Wrong', type: 'error', duration: 10000 });
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Send Message';
